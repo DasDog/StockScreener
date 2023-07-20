@@ -80,9 +80,9 @@ def main():
         try:
             stock = yf.Ticker(ticker)
             data = stock.info
-            for key, value in userWants.items() and save == True:
+            for key, value in userWants.items():
                 if not (value == ""):
-
+                    #print(data["longName"])
                     match (key):
 
                         case ('sector'):
@@ -91,9 +91,11 @@ def main():
                                 break
 
                         case ('industry'):
-                            if not (value == stock['industry']):
+                            if not (value == data['industry']):
                                 save = False
                                 break
+                            
+                        
 
         # TODO: Finish the rest of the match-case statement
         # TODO: Include in the loop that if save=False STOP and go on to the next stock
@@ -109,7 +111,7 @@ def main():
                         # Do nothing and go to the next stock.
 
             if (save):
-                print(data['longName'])
+                print("Saved!: ", data['longName'])
                 
         except KeyError:
             
