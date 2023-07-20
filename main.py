@@ -65,53 +65,57 @@ def getTickers(exchange):
 
 
 # MAIN --------------------------------------------------------------------------------
+def main(): 
+    # Get the user's preferences they would like to screen for
+    userWants = getPreferences()
 
-# Get the user's preferences they would like to screen for
-userWants = getPreferences()
-
-# Gather tickers in a list
-# exchange: NASDAQ, NYSE, or BOTH
-tickerList = getTickers(userWants['exchange'])
-
-
-for ticker in tickerList:
-    stock = yf.Ticker(ticker)
-    data = stock.info
-    save = True
-    for key, value in userWants.items():
-        if not (value == ""):
-
-            try:
-                
-                match (key):
-
-                    case ('sector'):
-                        if not (value == data['sector']):
-                            save = False
-                            break
-
-                    case ('industry'):
-                        if not (value == stock['industry']):
-                            save = False
-                            break
-
-# TODO: Finish the rest of the match-case statement
-# TODO: Include in the loop that if save=False STOP and go on to the next stock
-
-                    # case ('dividendRateMin'):
-                    #     if not (value <= stock['dividendRate']):
-                    #         save = False
-                    #         break
+    # Gather tickers in a list
+    # exchange: NASDAQ, NYSE, or BOTH
+    tickerList = getTickers(userWants['exchange'])
 
 
+    for ticker in tickerList:
+        stock = yf.Ticker(ticker)
+        data = stock.info
+        save = True
+        for key, value in userWants.items():
+            if not (value == ""):
 
-            except:
-                save = False
-                # Do nothing and go to the next stock.
+                try:
+                    
+                    match (key):
 
-    if (save):
-        print(data['longName'])
+                        case ('sector'):
+                            if not (value == data['sector']):
+                                save = False
+                                break
+
+                        case ('industry'):
+                            if not (value == stock['industry']):
+                                save = False
+                                break
+
+    # TODO: Finish the rest of the match-case statement
+    # TODO: Include in the loop that if save=False STOP and go on to the next stock
+
+                        # case ('dividendRateMin'):
+                        #     if not (value <= stock['dividendRate']):
+                        #         save = False
+                        #         break
 
 
-# validStocks = pd.DataFrame(columns=['Ticker', 'Company Name'])
-# Maybe download valid stocks from a list and put that info into excel
+
+                except:
+                    save = False
+                    # Do nothing and go to the next stock.
+
+        if (save):
+            print(data['longName'])
+
+
+    # validStocks = pd.DataFrame(columns=['Ticker', 'Company Name'])
+    # Maybe download valid stocks from a list and put that info into excel
+    
+    
+if __name__ == "__main__":
+    main()
