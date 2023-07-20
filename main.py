@@ -95,7 +95,142 @@ def main():
                                 save = False
                                 break
                             
-                        
+                        case ('payoutRatioMin'):
+                            if not (float(value) <= data['payoutRatio']):
+                                save = False
+                                break
+                    
+                        case ('payoutRatioMax'):
+                            if not (float(value) >= data['payoutRatio']):
+                                save = False
+                                break
+                            
+                            
+                            
+                            
+                            
+#//////////////////////////// Added Methods ///////////////////////////////////////////////////////////                            
+                        case ("priceToBookMin"):
+                            if not (float(value) <= data['priceToBook']):
+                                save = False
+                                break
+                            
+                        case ("priceToBookMax"):
+                            if not (float(value) >= data['priceToBook']):
+                                save = False
+                                break
+                            
+                        case ("trailingEpsMin"):
+                            if not (float(value) <= data['trailingEps']):
+                                save = False
+                                break
+                            
+                        case ("trailingEpsMax"):
+                            if not (float(value) >= data['trailingEps']):
+                                save = False
+                                break
+                            
+                        case ("quickRatioMin"):
+                            if not (float(value) <= data['quickRatio']):
+                                save = False
+                                break
+                            
+                        case ("quickRatioMax"):
+                            if not (float(value) >= data['quickRatio']):
+                                save = False
+                                break
+                            
+                        case ("currentRatioMin"):
+                            if not (float(value) <= data['currentRatio']):
+                                save = False
+                                break
+                            
+                        case ("currentRatioMax"):
+                            if not (float(value) >= data['currentRatio']):
+                                save = False
+                                break
+                            
+                        case ("debtToEquityMin"):
+                            if not (float(value) <= data['debtToEquity']):
+                                save = False
+                                break
+                            
+                        case ("debtToEquityMax"):
+                            if not (float(value) >= data['debtToEquity']):
+                                save = False
+                                break
+                            
+                        case ("revenuePerShareMin"):
+                            if not (float(value) <= data['revenuePerShare']):
+                                save = False
+                                break
+                            
+                        case ("revenuePerShareMax"):
+                            if not (float(value) >= data['revenuePerShare']):
+                                save = False
+                                break
+                            
+                        case ("returnOnAssetsMin"):
+                            if not (float(value) <= data['returnOnAssets']):
+                                save = False
+                                break
+                            
+                        case ("returnOnAssetsMax"):
+                            if not (float(value) >= data['returnOnAssets']):
+                                save = False
+                                break
+                            
+                        case ("returnOnEquityMin"):
+                            if not (float(value) <= data['returnOnEquity']):
+                                save = False
+                                break
+                            
+                        case ("returnOnEquityMax"):
+                            if not (float(value) >= data['returnOnEquity']):
+                                save = False
+                                break
+                            
+                        case ("earningsGrowthMin"):
+                            if not (float(value) <= data['earningsGrowth']):
+                                save = False
+                                break
+                            
+                        case ("earningsGrowthMax"):
+                            if not (float(value) >= data['earningsGrowth']):
+                                save = False
+                                break
+                            
+                        case ("revenueGrowthMin"):
+                            if not (float(value) <= data['revenueGrowth']):
+                                save = False
+                                break
+                            
+                        case ("revenueGrowthMax"):
+                            if not (float(value) >= data['revenueGrowth']):
+                                save = False
+                                break
+                            
+                        case ("grossMarginsMin"):
+                            if not (float(value) <= data['grossMargins']):
+                                save = False
+                                break
+                            
+                        case ("grossMarginsMax"):
+                            if not (float(value) >= data['grossMargins']):
+                                save = False
+                                break
+                            
+                        case ("operatingMarginsMin"):
+                            if not (float(value) <= data['operatingMargins']):
+                                save = False
+                                break
+                            
+                        case ("operatingMarginsMax"):
+                            if not (float(value) >= data['operatingMargins']):
+                                save = False
+                                break
+                            
+                       
 
         # TODO: Finish the rest of the match-case statement
         # TODO: Include in the loop that if save=False STOP and go on to the next stock
