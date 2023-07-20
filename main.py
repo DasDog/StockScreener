@@ -75,14 +75,14 @@ def main():
 
 
     for ticker in tickerList:
-        stock = yf.Ticker(ticker)
-        data = stock.info
+        
         save = True
-        for key, value in userWants.items():
-            if not (value == ""):
+        try:
+            stock = yf.Ticker(ticker)
+            data = stock.info
+            for key, value in userWants.items() and save == True:
+                if not (value == ""):
 
-                try:
-                    
                     match (key):
 
                         case ('sector'):
@@ -95,22 +95,26 @@ def main():
                                 save = False
                                 break
 
-    # TODO: Finish the rest of the match-case statement
-    # TODO: Include in the loop that if save=False STOP and go on to the next stock
+        # TODO: Finish the rest of the match-case statement
+        # TODO: Include in the loop that if save=False STOP and go on to the next stock
 
-                        # case ('dividendRateMin'):
-                        #     if not (value <= stock['dividendRate']):
-                        #         save = False
-                        #         break
+                            # case ('dividendRateMin'):
+                            #     if not (value <= stock['dividendRate']):
+                            #         save = False
+                            #         break
 
 
 
-                except:
-                    save = False
-                    # Do nothing and go to the next stock.
 
-        if (save):
-            print(data['longName'])
+                        # Do nothing and go to the next stock.
+
+            if (save):
+                print(data['longName'])
+                
+        except KeyError:
+            
+            save = False
+            
 
 
     # validStocks = pd.DataFrame(columns=['Ticker', 'Company Name'])
