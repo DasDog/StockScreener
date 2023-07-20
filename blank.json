@@ -1,0 +1,63 @@
+{
+    "exchange": "",
+    "sector": "",
+    "industry": "",
+
+    "dividendRateMin": "",
+    "dividendRateMax": "",
+
+    "payoutRatioMin": "",
+    "payoutRatioMax": "",
+
+    "trailingPEMin": "",
+    "trailingPEMax": "",
+
+    "marketCapMin": "",
+    "marketCapMax": "",
+
+    "priceToSalesTrailing12MonthsMin": "",
+    "priceToSalesTrailing12MonthsMax": "",
+
+    "profitMarginsMin": "",
+    "profitMarginsMax": "",
+
+    "bookValueMin": "",
+    "bookValueMax": "",
+    
+    "priceToBookMin": "",
+    "priceToBookMax": "",
+
+    "trailingEpsMin": "",
+    "trailingEpsMax": "",
+
+    "quickRatioMin": "",
+    "quickRatioMax": "",
+
+    "currentRatioMin": "",
+    "currentRatioMax": "",
+
+    "debtToEquityMin": "",
+    "debtToEquityMax": "",
+
+    "revenuePerShareMin": "",
+    "revenuePerShareMax": "",
+
+    "returnOnAssetsMin": "",
+    "returnOnAssetsMax": "",
+
+    "returnOnEquityMin": "",
+    "returnOnEquityMax": "",
+
+    "earningsGrowthMin": "",
+    "earningsGrowthMax": "",
+
+    "revenueGrowthMin": "",
+    "revenueGrowthMax": "",
+
+    "grossMarginsMin": "",
+    "grossMarginsMax": "",
+
+    "operatingMarginsMin": "",
+    "operatingMarginsMax": ""
+
+}
