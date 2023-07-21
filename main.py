@@ -73,8 +73,15 @@ def main():
     # exchange: NASDAQ, NYSE, or BOTH
     tickerList = getTickers(userWants['exchange'])
 
+    progressCount = 0
     for ticker in tickerList:
         save = True
+        
+        progressCount += 1
+        progressPercent = progressCount / len(tickerList) * 100
+        progressPercent = round(progressPercent, 2)
+        print("Progress: ", progressCount, "/",
+              len(tickerList), "... (", progressPercent, "%)")
         try:
             stock = yf.Ticker(ticker)
             data = stock.info
