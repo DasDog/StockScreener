@@ -20,88 +20,105 @@ def getPreferences():
 # ---------------------------------------------------------------------------
 
 
-def getTickers(exchange):
-    """Gathers all tickers of stocks we'd like to screen
+def getTickers(indexOrExchange):
+    """ Gathers all tickers of stocks we'd like to screen
 
     Args:
-        exchange (str): the exchange(s) we would like to gather the tickers from
+        indexOrExchange (str): the index or exchange(s) we would like to gather the tickers from
 
     Returns:
-        List: list of all tickers we will screen
+        tickersList (list): list of all tickers we will screen
     """
     tickersList = []
-    if (exchange == 'BOTH'):
-        nasdaq_tickers = pd.read_csv('nasdaq_tickers.csv')
-        nyse_tickers = pd.read_csv('nyse_tickers.csv')
 
-        for index, stock in nasdaq_tickers.iterrows():
-            tmp = stock['Symbol']
-            if not (pd.isna(tmp)):
-                if (len(tmp) < 5) and (tmp.isalpha()):
-                    tickersList.append(stock['Symbol'])
-        for index, stock in nyse_tickers.iterrows():
-            tmp = stock['Symbol']
-            if not (pd.isna(tmp)):
-                if (len(tmp) < 5) and (tmp.isalpha()):
-                    tickersList.append(stock['Symbol'])
+    match (indexOrExchange):
 
-    elif (exchange == 'NASDAQ'):
-        nasdaq_tickers = pd.read_csv('nasdaq_tickers.csv')
+        case ('NASDAQ'):
+            nasdaq_tickers = pd.read_csv(
+                'indexesAndExchanges/nasdaq_tickers.csv')
 
-        for index, stock in nasdaq_tickers.iterrows():
-            tmp = stock['Symbol']
-            if not (pd.isna(tmp)):
-                if (len(tmp) < 5) and (tmp.isalpha()):
-                    tickersList.append(stock['Symbol'])
+            for index, stock in nasdaq_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
 
-    elif (exchange == 'NYSE'):
-        nyse_tickers = pd.read_csv('nyse_tickers.csv')
+        case ('NYSE'):
+            nyse_tickers = pd.read_csv('indexesAndExchanges/nyse_tickers.csv')
 
-        for index, stock in nyse_tickers.iterrows():
-            tmp = stock['Symbol']
-            if not (pd.isna(tmp)):
-                if (len(tmp) < 5) and (tmp.isalpha()):
-                    tickersList.append(stock['Symbol'])
+            for index, stock in nyse_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
+
+        case ('ALL'):
+            nasdaq_tickers = pd.read_csv(
+                'indexesAndExchanges/nasdaq_tickers.csv')
+            nyse_tickers = pd.read_csv('indexesAndExchanges/nyse_tickers.csv')
+
+            for index, stock in nasdaq_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
+            for index, stock in nyse_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
+
+        case ('DOW'):
+            nyse_tickers = pd.read_csv('indexesAndExchanges/dow_tickers.csv')
+
+            for index, stock in nyse_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
+
+        case ('SP500'):
+            nyse_tickers = pd.read_csv('indexesAndExchanges/sp500_tickers.csv')
+
+            for index, stock in nyse_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
 
     return tickersList
+
+# ---------------------------------------------------------------------------------------
+
 
 def createDf(validStocks):
     """
     Returns a dataframe of the valid stocks stored as a dictionary
-
     Args:
         validStocks (dict): Data of the stocks that fit the criteria inputted by the user
-
     Returns:
         Dataframe: A pandas dataframe of all the data in {validStocks}
     """
-    
-    
+
     return pd.DataFrame(validStocks)
 
-
-
 # MAIN --------------------------------------------------------------------------------
+
+
 def main():
 
     # Create the DataFrame that will store all valid stocks with basic info
     # validStocks = pd.DataFrame(columns=['Ticker', 'Company Name', 'Sector', 'Industry',
     #                            'Market Cap', 'Price', 'P/E', 'Dividend Rate', 'Analyst Recommendation'])
-    
-    
-    
-    # validStocks = pd.DataFrame(columns=['Ticker', 'Company Name', 'Sector', 'Industry', 'Market Cap', 'Price', 'P/E', 'Dividend Rate', 'Analyst Recommendation'])
-    # print(validStocks)
     dictIndexKeeper = 0
     validStocksDict = {}
-
 
     # Get the user's preferences they would like to screen for
     userWants = getPreferences()
 
     # Gather tickers in a list
     # exchange: NASDAQ, NYSE, or BOTH
-    tickerList = getTickers(userWants['exchange'])
+    tickerList = getTickers(userWants['indexOrExchange'])
 
     # Check every gathered ticker against the user's preferences
     progressCount = 0
@@ -124,6 +141,9 @@ def main():
                 if not (value == ""):
 
                     match (key):
+
+                        case('indexOrExchange'):
+                            pass
 
                         case ('sector'):
                             if not (value == data['sector']):
@@ -323,80 +343,51 @@ def main():
                                 save = False
                                 break
 
-            """
-            *********************** READ ME ****************************
-
-            What I'm trying to do below after we check all the user's preferences
-            and determine the stock should be saved is create a data frame with all
-            info we need to properly fill in the table, then adding it to the original
-            by using .concat() to stick "dfTemp" into what will be the final data frame
-            "validStocks" (validStocks is created in line 73).
-
-            What I have here has not been tested and we need to make sure that if we cannot
-            get a certain piece of data we fill in N/A or something instead of erroring
-            or skipping the stock (it has been determined valid so we can't just skip it
-            like we did in the screening process). Since where we are trying to make this
-            data frame is still inside of that try-catch I think we are going to run into
-            issues where stocks will be missing from the spreadsheet because one of these
-            data entries could not be found.
-
-            I added a new file in GitHub called dataFrameExample that you should look at.
-
-            NOTE: If you see something online saying use .append(), it's outdated and that
-            is no longer a thing. Concat() seemed like the way to go when I was looking
-            stuff up.
-
-            Good luck, soldier.
-
-            """
-
             # If stock passes all preferences, save it
             if (save):
-
-                                
-                                
+                # print("Saved!: ", data['symbol'])
                 """
                 This is the handler for the dictionary if a stock is saved then its related data 
                 is added to dict at the index (dictIndexKeeper) there were some issues with a stock being 
                 added twice so I had to use the conditionals to prevent this.
+
                 """
-                                
-                                
                 values = validStocksDict.values()
                 if len(values) != 0:
                     if data['symbol'] not in values:
                         validStocksDict[dictIndexKeeper] = {'Ticker': data['symbol'],
-                                    'Company Name': data['longName'],
-                                    'Sector': data['sector'],
-                                    'Industry': data['industry'],
-                                    'Market Cap': data['marketCap'],
-                                    'Price': data['currentPrice'],
-                                    'P/E': data['trailingPE'],
-                                    'Dividend Rate': data['dividendRate'],
-                                    'Analyst Recommendation': data['recommendationKey']
-                                    }
+                                                            'Company Name': data['longName'],
+                                                            'Sector': data['sector'],
+                                                            'Industry': data['industry'],
+                                                            'Market Cap': data['marketCap'],
+                                                            'Price': data['currentPrice'],
+                                                            'P/E': data['trailingPE'],
+                                                            'Dividend Rate': data['dividendRate'],
+                                                            'Analyst Recommendation': data['recommendationKey']
+                                                            }
 
-                        print("Added: ", data['symbol'], "Index: ", dictIndexKeeper)
+                        print("Added: ", data['symbol'],
+                              "Index: ", dictIndexKeeper)
                         dictIndexKeeper += 1
                 else:
-                        validStocksDict[dictIndexKeeper] = {'Ticker': data['symbol'],
-                                    'Company Name': data['longName'],
-                                    'Sector': data['sector'],
-                                    'Industry': data['industry'],
-                                    'Market Cap': data['marketCap'],
-                                    'Price': data['currentPrice'],
-                                    'P/E': data['trailingPE'],
-                                    'Dividend Rate': data['dividendRate'],
-                                    'Analyst Recommendation': data['recommendationKey']
-                                    }
-                        print("Added: ", data['symbol'], "Index: ", dictIndexKeeper)
-                        dictIndexKeeper += 1
+                    validStocksDict[dictIndexKeeper] = {'Ticker': data['symbol'],
+                                                        'Company Name': data['longName'],
+                                                        'Sector': data['sector'],
+                                                        'Industry': data['industry'],
+                                                        'Market Cap': data['marketCap'],
+                                                        'Price': data['currentPrice'],
+                                                        'P/E': data['trailingPE'],
+                                                        'Dividend Rate': data['dividendRate'],
+                                                        'Analyst Recommendation': data['recommendationKey']
+                                                        }
+                    print("Added: ", data['symbol'],
+                          "Index: ", dictIndexKeeper)
+                    dictIndexKeeper += 1
 
-                
         except KeyError:
-            save = False
+            pass
             # Do nothing and screen the next stock, this one is missing data.
-            
+
     # Creates the DF for all valid stocks in the dictionary
     validStocksDf = createDf(validStocksDict)
     print(validStocksDf)
@@ -404,5 +395,7 @@ def main():
 # -----------------------------------------------------------------------------------------
 
 # Run the program
+
+
 if __name__ == "__main__":
     main()
