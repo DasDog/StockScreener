@@ -69,18 +69,18 @@ def getTickers(indexOrExchange):
                         tickersList.append(stock['Symbol'])
 
         case ('DOW'):
-            nyse_tickers = pd.read_csv('indexesAndExchanges/dow_tickers.csv')
+            dow_tickers = pd.read_csv('indexesAndExchanges/dow_tickers.csv')
 
-            for index, stock in nyse_tickers.iterrows():
+            for index, stock in dow_tickers.iterrows():
                 tmp = stock['Symbol']
                 if not (pd.isna(tmp)):
                     if (len(tmp) < 5) and (tmp.isalpha()):
                         tickersList.append(stock['Symbol'])
 
         case ('SP500'):
-            nyse_tickers = pd.read_csv('indexesAndExchanges/sp500_tickers.csv')
+            sp500_tickers = pd.read_csv('indexesAndExchanges/sp500_tickers.csv')
 
-            for index, stock in nyse_tickers.iterrows():
+            for index, stock in sp500_tickers.iterrows():
                 tmp = stock['Symbol']
                 if not (pd.isna(tmp)):
                     if (len(tmp) < 5) and (tmp.isalpha()):
@@ -104,6 +104,7 @@ def createDf(validStocks):
 
 # ---------------------------------------------------------------------------------------
 
+
 def populateRows(validStocks, data):
     """
     Populates validStocks with new saved stock from data.
@@ -112,44 +113,42 @@ def populateRows(validStocks, data):
         validStocks (list): A list of all stocks that meet the users preferences.
         data (Dict): All the stocks info.
     """
-    
+
     thisInfo = [data['symbol'], data['longName']]
-    possibleErrors = ['sector', 'industry', 'marketCap', 'currentPrice', 'trailingPE', 'dividendRate', 'recommendationKey']
+    possibleErrors = ['sector', 'industry', 'marketCap',
+                      'currentPrice', 'trailingPE', 'dividendRate', 'recommendationKey']
 
     for key in possibleErrors:
-        
+
         try:
             thisInfo.append(data[key])
         except:
             thisInfo.append("N/A")
-            
-            
+
     validStocks.append({'Ticker': thisInfo[0],
-                            'Company Name': thisInfo[1],
-                            'Sector': thisInfo[2],
-                            'Industry': thisInfo[3],
-                            'Market Cap': thisInfo[4],
-                            'Price': thisInfo[5],
-                            'P/E': thisInfo[6],
-                            'Dividend Rate': thisInfo[7],
-                            'Analyst Recommendation': thisInfo[8]
-                            })
+                        'Company Name': thisInfo[1],
+                        'Sector': thisInfo[2],
+                        'Industry': thisInfo[3],
+                        'Market Cap': thisInfo[4],
+                        'Price': thisInfo[5],
+                        'P/E': thisInfo[6],
+                        'Dividend Rate': thisInfo[7],
+                        'Analyst Recommendation': thisInfo[8]
+                        })
 
 # MAIN --------------------------------------------------------------------------------
 
 
 def main():
 
-    # Create the DataFrame that will store all valid stocks with basic info
-    # validStocks = pd.DataFrame(columns=['Ticker', 'Company Name', 'Sector', 'Industry',
-    #                            'Market Cap', 'Price', 'P/E', 'Dividend Rate', 'Analyst Recommendation'])
+    # Create the list that will store dictionaries of data of all valid stocks
     validStocksList = []
 
     # Get the user's preferences they would like to screen for
     userWants = getPreferences()
 
     # Gather tickers in a list
-    # exchange: NASDAQ, NYSE, or BOTH
+    # NYSE, NASDAQ, SP500, DOW, or ALL
     tickerList = getTickers(userWants['indexOrExchange'])
 
     # Check every gathered ticker against the user's preferences
@@ -377,19 +376,13 @@ def main():
 
             # If stock passes all preferences, save it
             if (save):
-
-                populateRows(validStocks= validStocksList, data= data)
-                print("Saved!: ", data['symbol'])
-                
-        
-
-
+                populateRows(validStocks=validStocksList, data=data)
 
         except KeyError as e:
-            print("Outside err", e)
+            pass
             # Do nothing and screen the next stock, this one is missing data.
 
-    # Creates the DF for all valid stocks in the dictionary
+    # Creates the DF for all valid stocks in the list
     validStocksDf = createDf(validStocksList)
     print(validStocksDf)
 
