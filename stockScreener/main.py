@@ -207,12 +207,12 @@ def main():
                                 break
 
                         case ('marketCapMin'):
-                            if not (int(value) <= data['marketCap']):
+                            if not (float(value) <= data['marketCap']):
                                 save = False
                                 break
 
                         case ('marketCapMax'):
-                            if not (int(value) >= data['marketCap']):
+                            if not (float(value) >= data['marketCap']):
                                 save = False
                                 break
 
@@ -393,5 +393,5 @@ def main():
 # Run the program
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

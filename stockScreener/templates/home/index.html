@@ -1,10 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <body>
+<head>
+    <title>Stock Screener</title>
 
-        <p> STOCK SCREENER TEST HTML </p>
-    
-    </body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top Section -->
+    <div class="">
+        <h1>Stock Screener</h1>
+    </div>
+
+    <!-- Get preferences -->
+    <br>
+
+    <form>
+        <label for="indexOrExchange">Index or Exchange: </label>
+        <select name="indexOrExchange">
+            <option value="empty"></option>
+            <option value="DOW">DOW</option>
+            <option value="SP500">S&P 500</option>
+            <option value="NASDAQ">NASDAQ</option>
+            <option value="NYSE">NYSE</option>
+            <option value="ALL">ALL</option>
+        </select>
+
+        <br><br>
+
+        <label for="sector">Sector: </label>
+        <select name="sector">
+            <option value="empty"></option>
+            <option value="basicMaterials">Basic Materials</option>
+            <option value="financialServices">Financial Services</option>
+            <option value="consumerDefensive">Consumer Defensive</option>
+            <option value="utilities">Utilities</option>
+            <option value="energy">Energy</option>
+            <option value="technology">Technology</option>
+            <option value="consumerCyclical">Consumer Cyclical</option>
+            <option value="realEstate">Real Estate</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="communicationServices">Communication Services</option>
+            <option value="industrials">Industrials</option>
+        </select>
+
+        <br>
+        <br>
+
+        <label for="industry">Industry: </label>
+        <input type="text" name="industry">
+
+        <br>
+        <br>
+
+        <label for="marketCap">Market Cap: </label>
+        <select name="marketCap">
+            <option value="empty"></option>
+            <option value="smallCap">Small Cap</option>
+            <option value="midCap">Mid Cap</option>
+            <option value="largeCap">Large Cap</option>
+            <option value="megaCap">Mega Cap</option>
+        </select>
+
+        <br>
+        <br>
+
+        <h3>The following must all be numbers and percentages must be expressed as decimals...</h3>
+        <br>
+
+        <h4>Dividend Rate</h4>
+        <label for="dividendRateMin">Minimum: </label>
+        <input type="text" name="dividendRateMin">
+        <label for="dividendRateMax">Maximum: </label>
+        <input type="text" name="dividendRateMax">
+
+        <br>
+        <br>
+
+        <h4>Payout Ratio</h4>
+        <label for="payoutRatioMin">Minimum: </label>
+        <input type="text" name="payoutRatioMin">
+        <label for="payoutRatioMax">Maximum: </label>
+        <input type="text" name="payoutRatioMax">
+
+        <br>
+        <br>
+
+        <h4>Price/Earnings (TTM)</h4>
+        <label for="trailingPEMin">Minimum: </label>
+        <input type="text" name="trailingPEMin">
+        <label for="trailingPEMax">Maximum: </label>
+        <input type="text" name="trailingPEMax">
+
+        <br>
+        <br>
+
+        <h4>Price/Sales (TTM)</h4>
+        <label for="priceToSalesTrailing12MonthsMin">Minimum: </label>
+        <input type="text" name="priceToSalesTrailing12MonthsMin">
+        <label for="priceToSalesTrailing12MonthsMax">Maximum: </label>
+        <input type="text" name="priceToSalesTrailing12MonthsMax">
+
+        <br>
+        <br>
+
+        <h4>Profit Margins</h4>
+        <label for="profitMarginsMin">Minimum: </label>
+        <input type="text" name="profitMarginsMin">
+        <label for="profitMarginsMax">Maximum: </label>
+        <input type="text" name="profitMarginsMax">
+
+        <br>
+        <br>
+
+        <h4>Book Value</h4>
+        <label for="bookValueMin">Minimum: </label>
+        <input type="text" name="bookValueMin">
+        <label for="bookValueMax">Maximum: </label>
+        <input type="text" name="bookValueMax">
+
+        <br>
+        <br>
+
+        <h4>Price/Book</h4>
+        <label for="priceToBookMin">Minimum: </label>
+        <input type="text" name="priceToBookMin">
+        <label for="priceToBookMax">Maximum: </label>
+        <input type="text" name="priceToBookMax">
+
+        <br>
+        <br>
+
+        <h4>Trailing EPS</h4>
+        <label for="trailingEpsMin">Minimum: </label>
+        <input type="text" name="trailingEpsMin">
+        <label for="trailingEpsMax">Maximum: </label>
+        <input type="text" name="trailingEpsMax">
+
+        <br>
+        <br>
+
+        <h4>Quick Ratio</h4>
+        <label for="quickRatioMin">Minimum: </label>
+        <input type="text" name="quickRatioMin">
+        <label for="quickRatioMax">Maximum: </label>
+        <input type="text" name="quickRatioMax">
+
+        <br>
+        <br>
+
+        <h4>Current Ratio</h4>
+        <label for="currentRatioMin">Minimum: </label>
+        <input type="text" name="currentRatioMin">
+        <label for="currentRatioMax">Maximum: </label>
+        <input type="text" name="currentRatioMax">
+
+        <br>
+        <br>
+
+        <h4>Debt to Equity</h4>
+        <label for="debtToEquityMin">Minimum: </label>
+        <input type="text" name="debtToEquityMin">
+        <label for="debtToEquityMax">Maximum: </label>
+        <input type="text" name="debtToEquityMax">
+
+        <br>
+        <br>
+
+        <h4>Revenue Per Share</h4>
+        <label for="revenuePerShareMin">Minimum: </label>
+        <input type="text" name="revenuePerShareMin">
+        <label for="revenuePerShareMax">Maximum: </label>
+        <input type="text" name="revenuePerShareMax">
+
+        <br>
+        <br>
+
+        <h4>Return on Assets (ROA)</h4>
+        <label for="returnOnAssetsMin">Minimum: </label>
+        <input type="text" name="returnOnAssetsMin">
+        <label for="returnOnAssetsMax">Maximum: </label>
+        <input type="text" name="returnOnAssetsMax">
+
+        <br>
+        <br>
+
+        <h4>Return on Equity (ROE)</h4>
+        <label for="returnOnEquityMin">Minimum: </label>
+        <input type="text" name="returnOnEquityMin">
+        <label for="returnOnEquityMax">Maximum: </label>
+        <input type="text" name="returnOnEquityMax">
+
+        <br>
+        <br>
+
+        <h4>Earnings Growth</h4>
+        <label for="earningsGrowthMin">Minimum: </label>
+        <input type="text" name="earningsGrowthMin">
+        <label for="earningsGrowthMax">Maximum: </label>
+        <input type="text" name="earningsGrowthMax">
+
+        <br>
+        <br>
+
+        <h4>Revenue Growth</h4>
+        <label for="revenueGrowthMin">Minimum: </label>
+        <input type="text" name="revenueGrowthMin">
+        <label for="revenueGrowthMax">Maximum: </label>
+        <input type="text" name="revenueGrowthMax">
+
+        <br>
+        <br>
+
+        <h4>Gross Margins</h4>
+        <label for="grossMarginsMin">Minimum: </label>
+        <input type="text" name="grossMarginsMin">
+        <label for="grossMarginsMax">Maximum: </label>
+        <input type="text" name="grossMarginsMax">
+
+        <br>
+        <br>
+
+        <h4>Operating Margins</h4>
+        <label for="operatingMarginsMin">Minimum: </label>
+        <input type="text" name="operatingMarginsMin">
+        <label for="operatingMarginsMax">Maximum: </label>
+        <input type="text" name="operatingMarginsMax">
+
+        <br>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
 
 </html>
