@@ -385,6 +385,8 @@ def main():
     # Creates the DF for all valid stocks in the list
     validStocksDf = createDf(validStocksList)
     print(validStocksDf)
+    
+    return validStocksDf
 
 # -----------------------------------------------------------------------------------------
 
