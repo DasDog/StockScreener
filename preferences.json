@@ -1,5 +1,5 @@
 {
-    "exchange": "NYSE",
+    "indexOrExchange": "NYSE",
     "sector": "Financial Services",
     "industry": "",
 
