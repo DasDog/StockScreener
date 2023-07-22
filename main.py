@@ -102,6 +102,37 @@ def createDf(validStocks):
 
     return pd.DataFrame(validStocks)
 
+def populateRows(validStocks, data):
+    """
+    Populates validStocks with new saved stock from data.
+
+    Args:
+        validStocks (list): A list of all stocks that meet the users preferences.
+        data (Dict): All the stocks info.
+    """
+    
+    thisInfo = [data['symbol'], data['longName']]
+    possibleErrors = ['sector', 'industry', 'marketCap', 'currentPrice', 'trailingPE', 'dividendRate', 'recommendationKey']
+
+    for key in possibleErrors:
+        
+        try:
+            thisInfo.append(data[key])
+        except:
+            thisInfo.append("N/A")
+            
+            
+    validStocks.append({'Ticker': thisInfo[0],
+                            'Company Name': thisInfo[1],
+                            'Sector': thisInfo[2],
+                            'Industry': thisInfo[3],
+                            'Market Cap': thisInfo[4],
+                            'Price': thisInfo[5],
+                            'P/E': thisInfo[6],
+                            'Dividend Rate': thisInfo[7],
+                            'Analyst Recommendation': thisInfo[8]
+                            })
+
 # MAIN --------------------------------------------------------------------------------
 
 
@@ -110,8 +141,7 @@ def main():
     # Create the DataFrame that will store all valid stocks with basic info
     # validStocks = pd.DataFrame(columns=['Ticker', 'Company Name', 'Sector', 'Industry',
     #                            'Market Cap', 'Price', 'P/E', 'Dividend Rate', 'Analyst Recommendation'])
-    dictIndexKeeper = 0
-    validStocksDict = {}
+    validStocksList = []
 
     # Get the user's preferences they would like to screen for
     userWants = getPreferences()
@@ -345,51 +375,26 @@ def main():
 
             # If stock passes all preferences, save it
             if (save):
-                # print("Saved!: ", data['symbol'])
                 """
                 This is the handler for the dictionary if a stock is saved then its related data 
                 is added to dict at the index (dictIndexKeeper) there were some issues with a stock being 
                 added twice so I had to use the conditionals to prevent this.
 
                 """
-                values = validStocksDict.values()
-                if len(values) != 0:
-                    if data['symbol'] not in values:
-                        validStocksDict[dictIndexKeeper] = {'Ticker': data['symbol'],
-                                                            'Company Name': data['longName'],
-                                                            'Sector': data['sector'],
-                                                            'Industry': data['industry'],
-                                                            'Market Cap': data['marketCap'],
-                                                            'Price': data['currentPrice'],
-                                                            'P/E': data['trailingPE'],
-                                                            'Dividend Rate': data['dividendRate'],
-                                                            'Analyst Recommendation': data['recommendationKey']
-                                                            }
 
-                        print("Added: ", data['symbol'],
-                              "Index: ", dictIndexKeeper)
-                        dictIndexKeeper += 1
-                else:
-                    validStocksDict[dictIndexKeeper] = {'Ticker': data['symbol'],
-                                                        'Company Name': data['longName'],
-                                                        'Sector': data['sector'],
-                                                        'Industry': data['industry'],
-                                                        'Market Cap': data['marketCap'],
-                                                        'Price': data['currentPrice'],
-                                                        'P/E': data['trailingPE'],
-                                                        'Dividend Rate': data['dividendRate'],
-                                                        'Analyst Recommendation': data['recommendationKey']
-                                                        }
-                    print("Added: ", data['symbol'],
-                          "Index: ", dictIndexKeeper)
-                    dictIndexKeeper += 1
+                populateRows(validStocks= validStocksList, data= data)
+                print("Saved!: ", data['symbol'])
+                
+        
 
-        except KeyError:
-            pass
+
+
+        except KeyError as e:
+            print("Outside err", e)
             # Do nothing and screen the next stock, this one is missing data.
 
     # Creates the DF for all valid stocks in the dictionary
-    validStocksDf = createDf(validStocksDict)
+    validStocksDf = createDf(validStocksList)
     print(validStocksDf)
 
 # -----------------------------------------------------------------------------------------
