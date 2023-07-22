@@ -102,6 +102,8 @@ def createDf(validStocks):
 
     return pd.DataFrame(validStocks)
 
+# ---------------------------------------------------------------------------------------
+
 def populateRows(validStocks, data):
     """
     Populates validStocks with new saved stock from data.
@@ -375,12 +377,6 @@ def main():
 
             # If stock passes all preferences, save it
             if (save):
-                """
-                This is the handler for the dictionary if a stock is saved then its related data 
-                is added to dict at the index (dictIndexKeeper) there were some issues with a stock being 
-                added twice so I had to use the conditionals to prevent this.
-
-                """
 
                 populateRows(validStocks= validStocksList, data= data)
                 print("Saved!: ", data['symbol'])
