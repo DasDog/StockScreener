@@ -378,7 +378,7 @@ def main():
             if (save):
                 populateRows(validStocks=validStocksList, data=data)
 
-        except KeyError as e:
+        except:
             pass
             # Do nothing and screen the next stock, this one is missing data.
 
