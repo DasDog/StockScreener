@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import landPage
+from .views import landPage, dataPage
 
 urlpatterns = [
     
-    path('', landPage, name='home')
+    path('', landPage, name='home'),
+    path('userStocks', dataPage, name='validStocks'),
     
 ]
