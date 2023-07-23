@@ -29,7 +29,17 @@ body {
     border-radius: 25px;
     border: 2px solid black;
     font-family:sans-serif;
+    /* padding 10px */
 }
+
+/* ------------------------------------------------------------------------------------------- */
+
+.container {
+    display: flex;
+    background-color: red;
+}
+
+
 
 /* ------------------------------------------------------------------------------------------- */
 /* Part where we get the user's preferences to screen for */
