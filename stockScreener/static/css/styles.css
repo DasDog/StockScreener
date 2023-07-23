@@ -1,7 +1,37 @@
 body {
-    background-color: blueviolet;
+    background-image: url("indexPageBackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.header {
-    text-align: center;
+label {
+    margin: 100px;
 }
+
+.header h1{
+    text-align: center;
+    margin: 2%;
+    background-image: url("https://media.istockphoto.com/id/1285588443/vector/abstract-green-cube-pattern-on-dark-blue-background-modern-lines-square-mesh-simple-flat.jpg?s=612x612&w=0&k=20&c=3FWkq_fKFriUC8k2Ps65lcDe-ttCD5_01nbBY0JNGaA=");
+    color: rgb(227, 223, 223);
+    padding: 20px;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
+.footer {
+    margin: 8%;
+    background-color: #2e2718;
+    color: lightgray;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
+/*
+https://media.istockphoto.com/id/1253602273/vector/financial-graph-with-line-chart-stock-market.jpg?s=612x612&w=0&k=20&c=TPPodPT1OAh8TkjwEZAEBmQXZTVJ1BdTSjh-2mAHZXk=
+https://media.gettyimages.com/id/1372574417/video/clean-soft-and-shiny-background-animation-abstract-simple-shapes-beautiful-blurred-motion.jpg?s=640x640&k=20&c=a-YnI_rT4O2CWiCNJcWH3keWWLwSTh-fayps-Vczft0=
+*/
+/*
+https://media.istockphoto.com/id/1285588443/vector/abstract-green-cube-pattern-on-dark-blue-background-modern-lines-square-mesh-simple-flat.jpg?s=612x612&w=0&k=20&c=3FWkq_fKFriUC8k2Ps65lcDe-ttCD5_01nbBY0JNGaA=
+*/
