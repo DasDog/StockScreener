@@ -1,24 +1,90 @@
 body {
-    background-image: url("indexPageBackground.jpg");
+    background-image: url("pageBackground.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-label {
-    margin: 100px;
-}
+/* ------------------------------------------------------------------------------------------- */
+/* Top part with page header */
 
 .header h1{
     text-align: center;
     margin: 2%;
-    background-image: url("https://media.istockphoto.com/id/1285588443/vector/abstract-green-cube-pattern-on-dark-blue-background-modern-lines-square-mesh-simple-flat.jpg?s=612x612&w=0&k=20&c=3FWkq_fKFriUC8k2Ps65lcDe-ttCD5_01nbBY0JNGaA=");
+    background-image: url("headerBackground.jpg");
     color: rgb(227, 223, 223);
     padding: 20px;
     border-radius: 25px;
     border: 2px solid black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
 }
 
+/* ------------------------------------------------------------------------------------------- */
+/* Second block of text on the home page, instructions for the user */
+
+.guide {
+    background-color: lightblue;
+    margin: 2%;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid black;
+    font-family:sans-serif;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* Part where we get the user's preferences to screen for */
+
+form {
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 16px;
+    font-family:sans-serif;
+}
+
+form h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.subtitle {
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.entryOption:hover {
+    background-color: lightblue;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+input[type=text] {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+#submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+#submit:hover {
+    background-color: #3f9342;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* Disclaimer at the bottom of the page */
 .footer {
     margin: 8%;
     background-color: #2e2718;
@@ -26,12 +92,6 @@ label {
     padding: 10px;
     border-radius: 25px;
     border: 2px solid black;
+    font-style: italic;
+    font-family:Arial, Helvetica, sans-serif;
 }
-
-/*
-https://media.istockphoto.com/id/1253602273/vector/financial-graph-with-line-chart-stock-market.jpg?s=612x612&w=0&k=20&c=TPPodPT1OAh8TkjwEZAEBmQXZTVJ1BdTSjh-2mAHZXk=
-https://media.gettyimages.com/id/1372574417/video/clean-soft-and-shiny-background-animation-abstract-simple-shapes-beautiful-blurred-motion.jpg?s=640x640&k=20&c=a-YnI_rT4O2CWiCNJcWH3keWWLwSTh-fayps-Vczft0=
-*/
-/*
-https://media.istockphoto.com/id/1285588443/vector/abstract-green-cube-pattern-on-dark-blue-background-modern-lines-square-mesh-simple-flat.jpg?s=612x612&w=0&k=20&c=3FWkq_fKFriUC8k2Ps65lcDe-ttCD5_01nbBY0JNGaA=
-*/
