@@ -18,8 +18,19 @@
 
     <!-- User Guide -->
     <div class="guide">
-        <p>TODO: Fill in guidelines the user should follow and whatever else we want to say. We can also
-            play with background colors of this and the hover if you want.
+        <p>
+            To screen for stocks that meet your preferences enter them below. It is required to
+            choose an index or exchange to screen from but all other categories are optional.
+            If left empty it will not be filtered against.
+        </p>
+        <p>
+            All percentages must be expressed as decimals. If you want something like earnings
+            growth of 0.10 or greater, simply fill in the Minimum while leaving the Maximum empty
+            and the opposite for anything less than.
+        </p>
+        <p>
+            If you would like to choose a specific industry, ensure you choose the matching sector
+            and ONLY choose an industry from that sector.
         </p>
     </div>
 
@@ -43,28 +54,121 @@
             <label for="sector">Sector: </label>
             <select name="sector">
                 <option value="empty"></option>
-                <option value="basicMaterials">Basic Materials</option>
-                <option value="financialServices">Financial Services</option>
-                <option value="consumerDefensive">Consumer Defensive</option>
-                <option value="utilities">Utilities</option>
-                <option value="energy">Energy</option>
-                <option value="technology">Technology</option>
-                <option value="consumerCyclical">Consumer Cyclical</option>
-                <option value="realEstate">Real Estate</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="communicationServices">Communication Services</option>
-                <option value="industrials">Industrials</option>
+                <option value="Basic Materials">Basic Materials</option>
+                <option value="Consumer Cyclical">Consumer Cyclical</option>
+                <option value="Consumer Defensive">Consumer Defensive</option>
+                <option value="Communication Services">Communication Services</option>
+                <option value="Energy">Energy</option>
+                <option value="Financial Services">Financial Services</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Industrials">Industrials</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Technology">Technology</option>
+                <option value="Utilities">Utilities</option>
             </select>
 
             <br>
             <br>
 
-            <label for="industry">Industry: </label>
-            <input type="text" name="industry">
+            <h4>Industry: </h4>
 
-            <br>
-            <br>
+            <p>
 
+            <label for="industry">Basic Materials: </label>
+            <select name="industry">
+                <option value="empty"></option>
+                <option value="Agricultural Inputs">Agricultural Inputs</option>
+                <option value="Aluminum">Aluminum</option>
+                <option value="Building Materials">Building Materials</option>
+                <option value="Chemicals">Chemicals</option>
+                <option value="Coking Coal">Coking Coal</option>
+                <option value="Copper">Copper</option>
+                <option value="Gold">Gold</option>
+                <option value="Lumber & Wood Production">Lumber & Wood Production</option>
+                <option value="Other Industrial Metals & Mining">Other Industrial Metals & Mining</option>
+                <option value="Other Precious Metals & Mining">Other Precious Metals & Mining</option>
+                <option value="Paper & Paper Products">Paper & Paper Products</option>
+                <option value="Silver">Silver</option>
+                <option value="Specialty Chemicals">Specialty Chemicals</option>
+                <option value="Steel">Steel</option>
+            </select>
+            <br>
+            <label for="industry">Consumer Cyclical: </label>
+            <select name="industry">
+                <option value="empty"></option>
+                <option value="Auto & Truck Dealerships">Auto & Truck Dealerships</option>
+                <option value="Auto Parts">Auto Parts</option>
+                <option value="Furnishing, Fixtures & Appliances">Furnishing, Fixtures & Appliances</option>
+                <option value="Textile Manufacturing">Textile Manufacturing</option>
+                <option value="Footwear & Accessories">Footwear & Accessories</option>
+                <option value="Personal Services">Personal Services</option>
+                <option value="Apparel Retail">Apparel Retail</option>
+                <option value="Home Improvement Retail">Home Improvement Retail</option>
+                <option value="Internet Retail">Internet Retail</option>
+                <option value="Gambling">Gambling</option>
+                <option value="Lodging">Lodging</option>
+                <option value="Travel Services">Travel Services</option>
+                <option value="Auto Manufacturers">Auto Manufacturers</option>
+                <option value="Recreational Vehicles">Recreational Vehicles</option>
+                <option value="Residential Construction">Residential Construction</option>
+                <option value="Apparel Manufacturing">Apparel Manufacturing</option>
+                <option value="Packaging & Containers">Packaging & Containers</option>
+                <option value="Restaurants">Restaurants</option>
+                <option value="Department Stores">Department Stores</option>
+                <option value="Luxury Goods">Luxury Goods</option>
+                <option value="Specialty Retail">Specialty Retail</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Resorts & Casinos">Resorts & Casinos</option>
+            </select>
+            <br>
+            <label for="industry">Consumer Defensive: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Communication Services: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Energy: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Financial Services: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Healthcare: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Industrials: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Real Estate: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Technology: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+            <br>
+            <label for="industry">Utilities: </label>
+            <select name="industry">
+                <option value="empty"></option>
+            </select>
+
+            </p>
+
+            <h4>
             <label for="marketCap">Market Cap: </label>
             <select name="marketCap">
                 <option value="empty"></option>
