@@ -23,23 +23,38 @@ body {
 /* Second block of text on the home page, instructions for the user */
 
 .guide {
-    background-color: lightblue;
+    background-color: #00b4b4;
     margin: 2%;
     padding: 10px;
     border-radius: 25px;
     border: 2px solid black;
     font-family:sans-serif;
-    /* padding 10px */
 }
 
 /* ------------------------------------------------------------------------------------------- */
+/* Grid container for the MIN/MAX screening options */
 
-.container {
-    display: flex;
-    background-color: red;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    gap: 10px;
 }
 
+.entryOption {
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 25px;
+    border: 2px solid black;
+}
 
+.entryOption:hover {
+    background-color: rgb(204, 242, 255);
+    border-radius: 25px;
+    border: 2px solid black;
+    padding-bottom: 15px;
+}
 
 /* ------------------------------------------------------------------------------------------- */
 /* Part where we get the user's preferences to screen for */
@@ -51,23 +66,17 @@ form {
     font-family:sans-serif;
 }
 
+/* First 4 questions */
 form h4 {
     font-size: 18px;
     font-weight: bold;
 }
 
+/* MIN/MAX questions */
 .subtitle {
     text-decoration: underline;
     font-size: 18px;
     font-weight: bold;
-}
-
-.entryOption:hover {
-    background-color: lightblue;
-    border-radius: 25px;
-    border: 2px solid black;
-    padding-left: 15px;
-    padding-bottom: 10px;
 }
 
 input[type=text] {
@@ -97,7 +106,7 @@ input[type=text] {
 /* Disclaimer at the bottom of the page */
 .footer {
     margin: 8%;
-    background-color: #2e2718;
+    background-color: #131a5e;
     color: lightgray;
     padding: 10px;
     border-radius: 25px;
