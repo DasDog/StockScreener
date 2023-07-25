@@ -20,10 +20,7 @@ class DataContext:
         dataToAdd = main()
         dataToAdd = dataToAdd.to_dict()
         
-        
-        self.data['fields'] = dataToAdd
-        
-        self.save()
+        return dataToAdd
         
     def __iter__(self):
         
@@ -31,9 +28,12 @@ class DataContext:
         
         #fix
         
-        for key in self.data['fields']:
-            row[key] = self.data['fields'].values()
+        for key in self.data:
+            
+            row[key] = self.data[key].values()
+            
             yield row
+            
         
             
             

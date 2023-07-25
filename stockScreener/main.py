@@ -85,6 +85,16 @@ def getTickers(indexOrExchange):
                 if not (pd.isna(tmp)):
                     if (len(tmp) < 5) and (tmp.isalpha()):
                         tickersList.append(stock['Symbol'])
+                        
+        case ('test'):
+            sp500_tickers = pd.read_csv('indexesAndExchanges/test.csv')
+
+            for index, stock in sp500_tickers.iterrows():
+                tmp = stock['Symbol']
+                if not (pd.isna(tmp)):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
+                        tickersList.append(stock['Symbol'])
+                        
 
     return tickersList
 
