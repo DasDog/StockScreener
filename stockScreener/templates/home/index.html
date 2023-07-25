@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+
 <head>
-    <title>Stock Screener</title>
+    <title>Fundamental Stock Screener</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="static\css\styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/css/favicon.png">
 </head>
 
 <body>
-
     <!-- Top Section -->
     <div class="header">
         <h1>FUNDAMENTAL STOCK SCREENER</h1>
@@ -165,31 +165,112 @@
             <label for="industry">Financial Services: </label>
             <select name="industry">
                 <option value=""></option>
+                <option value="Asset Management">Asset Management</option>
+                <option value="Banks—Diversified">Banks—Diversified</option>
+                <option value="Banks—Regional">Banks—Regional</option>
+                <option value="Capital Markets">Capital Markets</option>
+                <option value="Credit Services">Credit Services</option>
+                <option value="Financial Data & Stock Exchanges">Financial Data & Stock Exchanges</option>
+                <option value="Financial Conglomerates">Financial Conglomerates</option>
+                <option value="Insurance Brokers">Insurance Brokers</option>
+                <option value="Insurance—Diversified">Insurance—Diversified</option>
+                <option value="Insurance—Life">Insurance—Life</option>
+                <option value="Insurance—Property & Casualty">Insurance—Property & Casualty</option>
+                <option value="Insurance—Reinsurance">Insurance—Reinsurance</option>
+                <option value="Insurance—Specialty">Insurance—Specialty</option>
+                <option value="Mortgage Finance">Mortgage Finance</option>
+                <option value="Shell Companies">Shell Companies</option>
             </select>
             <br>
             <label for="industry">Healthcare: </label>
             <select name="industry">
                 <option value=""></option>
+                <option value="Biotechnology">Biotechnology</option>
+                <option value="Diagnostics & Research">Diagnostics & Research</option>
+                <option value="Drug Manufacturers—General">Drug Manufacturers—General</option>
+                <option value="Drug Manufacturers—Specialty & Generic">Drug Manufacturers—Specialty & Generic</option>
+                <option value="Healthcare Plans">Healthcare Plans</option>
+                <option value="Health Information Services">Health Information Services</option>
+                <option value="Medical Care Facilties">Medical Care Facilties</option>
+                <option value="Medical Devices">Medical Devices</option>
+                <option value="Medical Distribution">Medical Distribution</option>
+                <option value="Medical Instruments & Supplies">Medical Instruments & Supplies</option>
+                <option value="Pharmaceutical Retailers">Pharmaceutical Retailers</option>
             </select>
             <br>
             <label for="industry">Industrials: </label>
             <select name="industry">
                 <option value=""></option>
+                <option value="Aerospace & Defensive">Aerospace & Defensive</option>
+                <option value="Airports & Air Services">Airports & Air Services</option>
+                <option value="Airlines">Airlines</option>
+                <option value="Building Products & Equiptment">Building Products & Equiptment</option>
+                <option value="Business Equiptment & Supplies">Business Equiptment & Supplies</option>
+                <option value="Conglomerates">Conglomerates</option>
+                <option value="Consulting Services">Consulting Services</option>
+                <option value="Electrical Equiptment & Parts">Electrical Equiptment & Parts</option>
+                <option value="Engineering & Construction">Engineering & Construction</option>
+                <option value="Farm & Heavy Construction Machinery">Farm & Heavy Construction Machinery</option>
+                <option value="Industrial Distribution">Industrial Distribution</option>
+                <option value="Infrastructure Operations">Infrastructure Operations</option>
+                <option value="Integrated Freight & Logistics">Integrated Freight & Logistics</option>
+                <option value="Security & Protection Services">Security & Protection Services</option>
+                <option value="Marine Shipping">Marine Shipping</option>
+                <option value="Metal Fabrication">Metal Fabrication</option>
+                <option value="Pollution & Treatment Controls">Pollution & Treatment Controls</option>
+                <option value="Railroads">Railroads</option>
+                <option value="Rental & Leasing Services">Rental & Leasing Services</option>
+                <option value="Specialty Business Services">Specialty Business Services</option>
+                <option value="Specialty Industrial Machinery">Specialty Industrial Machinery</option>
+                <option value="Staffing & Employment Services">Staffing & Employment Services</option>
+                <option value="Tools & Accessories">Tools & Accessories</option>
+                <option value="Trucking">Trucking</option>
+                <option value="Waste Management">Waste Management</option>
             </select>
             <br>
             <label for="industry">Real Estate: </label>
             <select name="industry">
                 <option value=""></option>
+                <option value="Real Estate—Development">Real Estate—Development</option>
+                <option value="Real Estate—Diversified">Real Estate—Diversified</option>
+                <option value="Real Estate Services">Real Estate Services</option>
+                <option value="REIT-Diversified">REIT-Diversified</option>
+                <option value="REIT—Healthcare Facilities">REIT—Healthcare Facilities</option>
+                <option value="REIT-Hotel & Motel">REIT-Hotel & Motel</option>
+                <option value="REIT-Industrial">REIT-Industrial</option>
+                <option value="REIT-Mortgage">REIT-Mortgage</option>
+                <option value="REIT-Office">REIT-Office</option>
+                <option value="REIT-Retail">REIT-Retail</option>
+                <option value="REIT-Residential">REIT-Residential</option>
+                <option value="REIT-Specialty">REIT-Specialty</option>
             </select>
             <br>
             <label for="industry">Technology: </label>
             <select name="industry">
                 <option value=""></option>
+                <option value="Communication Equiptment">Communication Equiptment</option>
+                <option value="Computer Hardware">Computer Hardware</option>
+                <option value="Consumer Electronics">Consumer Electronics</option>
+                <option value="Electronic Components">Electronic Components</option>
+                <option value="Electronics & Computer Distribution">Electronics & Computer Distribution</option>
+                <option value="Information Technology Services">Information Technology Services</option>
+                <option value="Scientific & Technical Instruments">Scientific & Technical Instruments</option>
+                <option value="Semiconductors">Semiconductors</option>
+                <option value="Semiconductor Equipment & Materials">Semiconductor Equipment & Materials</option>
+                <option value="Software-Application">Software-Application</option>
+                <option value="Software-Infrastructure">Software-Infrastructure</option>
+                <option value="Solar">Solar</option>
             </select>
             <br>
             <label for="industry">Utilities: </label>
             <select name="industry">
                 <option value=""></option>
+                <option value="Utilities—Diversified">Utilities—Diversified</option>
+                <option value="Utilities—Independent Power Producers">Utilities—Independent Power Producers</option>
+                <option value="Utilities—Regulated Electric">Utilities—Regulated Electric</option>
+                <option value="Utilities—Regulated Gas">Utilities—Regulated Gas</option>
+                <option value="Utilities—Regulated Water">Utilities—Regulated Water</option>
+                <option value="Utilities—Renewable">Utilities—Renewable</option>
             </select>
 
             </p>
