@@ -126,7 +126,7 @@ def populateRows(validStocks, data):
 
     thisInfo = [data['symbol'], data['longName']]
     possibleErrors = ['sector', 'industry', 'marketCap',
-                      'currentPrice', 'trailingPE', 'dividendRate', 'recommendationKey']
+                      'currentPrice', 'trailingPE', 'dividendYield', 'recommendationKey']
 
     for key in possibleErrors:
 
@@ -142,7 +142,7 @@ def populateRows(validStocks, data):
                         'Market Cap': thisInfo[4],
                         'Price': thisInfo[5],
                         'P/E': thisInfo[6],
-                        'Dividend Rate': thisInfo[7],
+                        'Dividend Yield': thisInfo[7],
                         'Analyst Recommendation': thisInfo[8]
                         })
 
@@ -196,13 +196,13 @@ def main():
                                 save = False
                                 break
 
-                        case ('dividendRateMin'):
-                            if not (float(value) <= data['dividendRate']):
+                        case ('dividendYieldMin'):
+                            if not (float(value) <= data['dividendYield']):
                                 save = False
                                 break
 
-                        case ('dividendRateMax'):
-                            if not (float(value) >= data['dividendRate']):
+                        case ('dividendYieldMax'):
+                            if not (float(value) >= data['dividendYield']):
                                 save = False
                                 break
 
