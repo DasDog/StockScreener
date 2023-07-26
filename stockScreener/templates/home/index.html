@@ -438,7 +438,7 @@
 
         <br>
 
-        <input type="submit" id="submit" value="Submit">
+        <input type="submit" id="submit" value="Submit"  </input>
     </form>
 
     <div class="footer">
@@ -473,9 +473,10 @@
    console.log(jsonData);
 	$.ajax(
 	{
-		url : '{% url "dataHandler:ReturnedData"  %}',
+		url : '{% url "dataHandler:captureJson"  %}',
 		type: "POST",
-		data : jsonData,
+		data : {'data': JSON.stringify(jsonData)},
+        action:"postData",
 		
 	});
     e.preventDefault();	

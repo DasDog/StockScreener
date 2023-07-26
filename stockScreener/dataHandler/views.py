@@ -1,9 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .UserDataFrame import DataContext
 from django.views.decorators.csrf import csrf_exempt
+import json as js
 
-# Create your views here.
 
+@csrf_exempt
+def captureJson(request):
+    
+    json = request.POST.get('data')
+    setData = js.loads(json)
+    print(setData)
+    response = redirect('dataHandler:ReturnedData')
+    
+    return response
+    
 
 @csrf_exempt
 def dataToHtml(request):
@@ -18,7 +28,7 @@ def dataToHtml(request):
     mCap = row['Market Cap'].values()
     price = row['Price'].values()
     pE = row['P/E'].values()
-    dRate = row['Dividend Rate'].values()
+    dRate = row['Dividend Yield'].values()
     aRec = row['Analyst Recommendation'].values()
     
     
