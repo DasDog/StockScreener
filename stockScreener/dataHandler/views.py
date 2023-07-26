@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .UserDataFrame import DataContext
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
 
-
+@csrf_exempt
 def dataToHtml(request):
     
     row = DataContext(request)

@@ -35,7 +35,7 @@
     </div>
 
     <!-- Get preferences -->
-    <form>
+    <form type="post" id="myform">
         
         <h4>
             <label for="indexOrExchange">Index or Exchange<span style="color: red;">*</span>: </label>
@@ -448,5 +448,39 @@
         </p>
     </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#submit").click(function(e){
+	 var jsonData = {};
+	 
+   var formData = $("#myform").serializeArray();
+   console.log(formData);
+   
+   $.each(formData, function() {
+        if (jsonData[this.name]) {
+           if (!jsonData[this.name].push) {
+               jsonData[this.name] = [jsonData[this.name]];
+           }
+           jsonData[this.name].push(this.value || '');
+       } else {
+           jsonData[this.name] = this.value || '';
+       }
+	       
+	   
+   });
+   console.log(jsonData);
+	$.ajax(
+	{
+		url : '{% url "dataHandler:ReturnedData"  %}',
+		type: "POST",
+		data : jsonData,
+		
+	});
+    e.preventDefault();	
+});
+});
+</script>
 
 </html>
