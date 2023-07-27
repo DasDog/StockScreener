@@ -23,28 +23,35 @@ def dataToHtml(request):
     
     row = DataContext(request)
     row  = row.populateDataContext()
+    
+    try:
 
-    tickers = row['Ticker'].values()
-    companies = row['Company Name'].values()
-    sectors = row['Sector'].values()
-    industry = row['Industry'].values()
-    mCap = row['Market Cap'].values()
-    price = row['Price'].values()
-    pE = row['P/E'].values()
-    dRate = row['Dividend Yield'].values()
-    aRec = row['Analyst Recommendation'].values()
+        tickers = row['Ticker'].values()
+        companies = row['Company Name'].values()
+        sectors = row['Sector'].values()
+        industry = row['Industry'].values()
+        mCap = row['Market Cap'].values()
+        price = row['Price'].values()
+        pE = row['P/E'].values()
+        dRate = row['Dividend Yield'].values()
+        aRec = row['Analyst Recommendation'].values()
+        return render(request, 'dataPage/dataView.html', {
+                                                            'Tickers': tickers, 
+                                                            'companyName': companies,
+                                                            'Sectors': sectors,
+                                                            'Industry': industry,
+                                                            'marketCap': mCap,
+                                                            'Price': price,
+                                                            'PE': pE,
+                                                            'Dividend': dRate,
+                                                            'recommend':aRec })
+        
+    except KeyError:
+        
+        return render(request, 'dataPage/noStocks.html')
+        
     
     
     
-    return render(request, 'dataPage/dataView.html', {
-        'Tickers': tickers, 
-        'companyName': companies,
-        'Sectors': sectors,
-        'Industry': industry,
-        'marketCap': mCap,
-        'Price': price,
-        'PE': pE,
-        'Dividend': dRate,
-        'recommend':aRec })
     
     

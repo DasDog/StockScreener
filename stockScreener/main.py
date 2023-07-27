@@ -166,6 +166,7 @@ def main():
     # Gather tickers in a list
     # NYSE, NASDAQ, SP500, DOW, or ALL
     tickerList = getTickers(userWants['indexOrExchange'])
+    userWants['industry']
 
     # Check every gathered ticker against the user's preferences
     progressCount = 0
