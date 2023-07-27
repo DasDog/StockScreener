@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponse
 from .UserDataFrame import DataContext
 from django.views.decorators.csrf import csrf_exempt
 import json as js
+from main import writeJson
+
 
 
 @csrf_exempt
@@ -9,10 +11,11 @@ def captureJson(request):
     
     json = request.POST.get('data')
     setData = js.loads(json)
-    print(setData)
-    response = redirect('dataHandler:ReturnedData')
     
-    return response
+    writeJson(setData)
+    
+    return HttpResponse("Success")
+    
     
 
 @csrf_exempt

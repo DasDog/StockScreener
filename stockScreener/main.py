@@ -6,6 +6,12 @@ import json
 # ---------------------------------------------------------------------------
 
 
+def writeJson(jsonObj):
+    
+    with open('preferences.json', 'w') as fp:
+        json.dump(jsonObj, fp, indent=2)
+
+
 def getPreferences():
     """Loads the JSON file containing the parameters the user wishes to screen stocks for.
 

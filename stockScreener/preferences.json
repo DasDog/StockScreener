@@ -1,63 +1,46 @@
 {
-    "indexOrExchange": "DOW",
-    "sector": "",
-    "industry": "",
-
-    "dividendYieldMin": "",
-    "dividendYieldMax": "",
-
-    "payoutRatioMin": "0.1",
-    "payoutRatioMax": "",
-
-    "trailingPEMin": "",
-    "trailingPEMax": "40",
-
-    "marketCapMin": "",
-    "marketCapMax": "",
-
-    "priceToSalesTrailing12MonthsMin": "",
-    "priceToSalesTrailing12MonthsMax": "",
-
-    "profitMarginsMin": "",
-    "profitMarginsMax": "",
-
-    "bookValueMin": "1",
-    "bookValueMax": "",
-    
-    "priceToBookMin": "",
-    "priceToBookMax": "",
-
-    "trailingEpsMin": "",
-    "trailingEpsMax": "",
-
-    "quickRatioMin": "",
-    "quickRatioMax": "",
-
-    "currentRatioMin": "",
-    "currentRatioMax": "",
-
-    "debtToEquityMin": "",
-    "debtToEquityMax": "",
-
-    "revenuePerShareMin": "",
-    "revenuePerShareMax": "",
-
-    "returnOnAssetsMin": "",
-    "returnOnAssetsMax": "",
-
-    "returnOnEquityMin": "",
-    "returnOnEquityMax": "",
-
-    "earningsGrowthMin": "0.1",
-    "earningsGrowthMax": "",
-
-    "revenueGrowthMin": "",
-    "revenueGrowthMax": "",
-
-    "grossMarginsMin": "",
-    "grossMarginsMax": "",
-
-    "operatingMarginsMin": "",
-    "operatingMarginsMax": ""
-
+  "indexOrExchange": "DOW",
+  "sector": "Technology",
+  "industryB": "Aluminum",
+  "industry": [
+    "Consumer Electronics",
+    ""
+  ],
+  "marketCap": "",
+  "dividendYieldMin": "",
+  "dividendYieldMax": "",
+  "payoutRatioMin": "",
+  "payoutRatioMax": "",
+  "trailingPEMin": "",
+  "trailingPEMax": "",
+  "priceToSalesTrailing12MonthsMin": "",
+  "priceToSalesTrailing12MonthsMax": "",
+  "profitMarginsMin": "",
+  "profitMarginsMax": "",
+  "bookValueMin": "",
+  "bookValueMax": "",
+  "priceToBookMin": "",
+  "priceToBookMax": "",
+  "trailingEpsMin": "",
+  "trailingEpsMax": "",
+  "quickRatioMin": "",
+  "quickRatioMax": "",
+  "currentRatioMin": "",
+  "currentRatioMax": "",
+  "debtToEquityMin": "",
+  "debtToEquityMax": "",
+  "revenuePerShareMin": "",
+  "revenuePerShareMax": "",
+  "returnOnAssetsMin": "",
+  "returnOnAssetsMax": "",
+  "returnOnEquityMin": "",
+  "returnOnEquityMax": "",
+  "earningsGrowthMin": "",
+  "earningsGrowthMax": "",
+  "revenueGrowthMin": "",
+  "revenueGrowthMax": "",
+  "grossMarginsMin": "",
+  "grossMarginsMax": "",
+  "operatingMarginsMin": "",
+  "operatingMarginsMax": ""
 }
