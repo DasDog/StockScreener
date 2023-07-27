@@ -33,7 +33,7 @@ def dataToHtml(request):
         mCap = row['Market Cap'].values()
         price = row['Price'].values()
         pE = row['P/E'].values()
-        dRate = row['Dividend Yield'].values()
+        dYield = row['Dividend Yield'].values()
         aRec = row['Analyst Recommendation'].values()
         return render(request, 'dataPage/dataView.html', {
                                                             'Tickers': tickers, 
@@ -43,7 +43,7 @@ def dataToHtml(request):
                                                             'marketCap': mCap,
                                                             'Price': price,
                                                             'PE': pE,
-                                                            'Dividend': dRate,
+                                                            'Dividend': dYield,
                                                             'recommend':aRec })
         
     except KeyError:

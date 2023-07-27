@@ -1,7 +1,7 @@
 {
   "indexOrExchange": "DOW",
-  "sector": "",
-  "industry": ["Aerospace & Defense"],
+  "sector": "Technology",
+  "industry": "",
   "marketCap": "",
   "dividendYieldMin": "",
   "dividendYieldMax": "",
