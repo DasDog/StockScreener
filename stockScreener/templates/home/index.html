@@ -445,10 +445,6 @@
     </form>
 
     <br>
-
-    <div id="Progress_Status">
-        <div id="progressBar"></div>
-    </div>
     
     <div class="footer">
         <p>* Disclaimer: This is just a resource and should not be used as investment advice.
@@ -500,28 +496,9 @@
         });
         
         $("#loadResults").click(function (e) {
-            update();
             window.location.href = '{% url "dataHandler:ReturnedData"  %}';
         });
     });
-
-    function update() {
-        var element = document.getElementById("progressBar");   
-        var width = 1;
-        var identity = setInterval(scene, 38.9);
-        // 1167 because 1.67s
-        function scene() {
-            var fullBar = 10;
-
-            if (width >= 100) {
-                clearInterval(identity);
-            } else {
-                width++; 
-                element.style.width = width + '%'; 
-                element.innerHTML = width * 1  + '%';
-            }
-        }
-    }
 </script>
 
 </html>

@@ -120,25 +120,6 @@ input[type=text] {
 }
 
 /* ------------------------------------------------------------------------------------------- */
-/* Progress Bar */
-
-#Progress_Status {
-    width: 50%;
-    background-color: #ffffff;
-    margin-left: auto;
-    margin-right: auto;
-  }
-    
-#progressBar {
-    width: 1%;
-    height: 35px;
-    background-color: #4CAF50;
-    text-align: center;
-    line-height: 32px;
-    color: black;
-}
-
-/* ------------------------------------------------------------------------------------------- */
 /* Disclaimer at the bottom of the page */
 .footer {
     margin: 8%;

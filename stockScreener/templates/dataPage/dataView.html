@@ -7,19 +7,7 @@
 
         <table style="width:100%">
             <tr>
-              <th>Ticker</th>
-              <th>Company</th>
-              <th>Sector</th>
-              <th>Industry</th>
-              <th>Market Cap</th>
-              <th>Price</th>
-              <th>P/E</th>
-              <th>Dividend Yield</th>
-              <th>Analyst Recommendation</th>
-
-            </tr>
-
-            <tr>
+                <th>Ticker</th>
                 {% for tick in Tickers %}
         
                 <td> {{ tick }} </td>
@@ -28,6 +16,7 @@
             </tr>
             
             <tr>
+                <th>Company</th>
                 {% for c in companyName %}
         
                 <td>  {{ c }} </td>
@@ -36,6 +25,7 @@
             </tr>
 
             <tr>
+                <th>Sector</th>
                 {% for s in Sectors %}
         
                 <td>  {{ s }} </td>
@@ -44,6 +34,7 @@
             </tr>
 
             <tr>
+                <th>Industry</th>
                 {% for I in Industry %}
         
                 <td>  {{ I }} </td>
@@ -51,6 +42,7 @@
                 {% endfor %}
             </tr>
             <tr>
+                <th>Market Cap</th>
                 {% for m in marketCap %}
         
                 <td>  {{ m }} </td>
@@ -58,6 +50,7 @@
                 {% endfor %}
             </tr>
             <tr>
+                <th>Price</th>
                 {% for p in Price %}
         
                 <td>  {{ p }} </td>
@@ -65,6 +58,7 @@
                 {% endfor %}
             </tr>
             <tr>
+                <th>P/E</th>
                 {% for e in PE %}
         
                 <td>  {{ e }} </td>
@@ -72,6 +66,7 @@
                 {% endfor %}
             </tr>
             <tr>
+                <th>Dividend Yield</th>
                 {% for b in Dividend %}
         
                 <td>  {{ b }} </td>
@@ -79,6 +74,7 @@
                 {% endfor %}
             </tr>
             <tr>
+                <th>Analyst Recommendation</th>
                 {% for r in recommend %}
         
                 <td>  {{ r }} </td>
