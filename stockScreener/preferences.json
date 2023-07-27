@@ -1,16 +1,16 @@
 {
-    "indexOrExchange": "test",
+    "indexOrExchange": "DOW",
     "sector": "",
     "industry": "",
 
     "dividendYieldMin": "",
     "dividendYieldMax": "",
 
-    "payoutRatioMin": "",
+    "payoutRatioMin": "0.1",
     "payoutRatioMax": "",
 
     "trailingPEMin": "",
-    "trailingPEMax": "",
+    "trailingPEMax": "40",
 
     "marketCapMin": "",
     "marketCapMax": "",
@@ -21,7 +21,7 @@
     "profitMarginsMin": "",
     "profitMarginsMax": "",
 
-    "bookValueMin": "",
+    "bookValueMin": "1",
     "bookValueMax": "",
     
     "priceToBookMin": "",
@@ -48,7 +48,7 @@
     "returnOnEquityMin": "",
     "returnOnEquityMax": "",
 
-    "earningsGrowthMin": "",
+    "earningsGrowthMin": "0.1",
     "earningsGrowthMax": "",
 
     "revenueGrowthMin": "",
