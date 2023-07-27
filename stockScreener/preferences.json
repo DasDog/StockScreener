@@ -1,11 +1,7 @@
 {
   "indexOrExchange": "DOW",
-  "sector": "Technology",
-  "industryB": "Aluminum",
-  "industry": [
-    "Consumer Electronics",
-    ""
-  ],
+  "sector": "",
+  "industry": ["Aerospace & Defense"],
   "marketCap": "",
   "dividendYieldMin": "",
   "dividendYieldMax": "",

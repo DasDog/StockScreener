@@ -7,7 +7,7 @@ import json
 
 
 def writeJson(jsonObj):
-    
+
     with open('preferences.json', 'w') as fp:
         json.dump(jsonObj, fp, indent=2)
 
@@ -84,14 +84,15 @@ def getTickers(indexOrExchange):
                         tickersList.append(stock['Symbol'])
 
         case ('SP500'):
-            sp500_tickers = pd.read_csv('indexesAndExchanges/sp500_tickers.csv')
+            sp500_tickers = pd.read_csv(
+                'indexesAndExchanges/sp500_tickers.csv')
 
             for index, stock in sp500_tickers.iterrows():
                 tmp = stock['Symbol']
                 if not (pd.isna(tmp)):
                     if (len(tmp) < 5) and (tmp.isalpha()):
                         tickersList.append(stock['Symbol'])
-                        
+
         case ('test'):
             sp500_tickers = pd.read_csv('indexesAndExchanges/test.csv')
 
@@ -100,7 +101,6 @@ def getTickers(indexOrExchange):
                 if not (pd.isna(tmp)):
                     if (len(tmp) < 5) and (tmp.isalpha()):
                         tickersList.append(stock['Symbol'])
-                        
 
     return tickersList
 
@@ -167,6 +167,29 @@ def main():
     # NYSE, NASDAQ, SP500, DOW, or ALL
     tickerList = getTickers(userWants['indexOrExchange'])
 
+    # Get the Industry if applicable
+    thisInd = ""
+    if (len(userWants['industry']) != 0):
+        industs = userWants['industry']
+        for ind in industs:
+            if (ind != ""):
+                thisInd = ind
+
+    # Get the Market Cap values if applicable
+    match (userWants['marketCap']):
+        case ('Small Cap'):
+            marketCapMin = 0
+            marketCapMax = 2000000000
+        case ('Mid Cap'):
+            marketCapMin = 2000000000
+            marketCapMax = 10000000000
+        case ('Large Cap'):
+            marketCapMin = 10000000000
+            marketCapMax = 200000000000
+        case ('Mega Cap'):
+            marketCapMin = 200000000000
+            marketCapMax = 999999999999999999
+
     # Check every gathered ticker against the user's preferences
     progressCount = 0
     for ticker in tickerList:
@@ -198,9 +221,12 @@ def main():
                                 break
 
                         case ('industry'):
-                            if not (value == data['industry']):
-                                save = False
-                                break
+                            if (thisInd != ""):
+                                if not (thisInd == data['industry']):
+                                    save = False
+                                    break
+                            else:
+                                pass
 
                         case ('dividendYieldMin'):
                             if not (float(value) <= data['dividendYield']):
@@ -222,13 +248,8 @@ def main():
                                 save = False
                                 break
 
-                        case ('marketCapMin'):
-                            if not (float(value) <= data['marketCap']):
-                                save = False
-                                break
-
-                        case ('marketCapMax'):
-                            if not (float(value) >= data['marketCap']):
+                        case ('marketCap'):
+                            if not ((marketCapMin <= data['marketCap']) and marketCapMax >= data['marketCap']):
                                 save = False
                                 break
 
@@ -401,7 +422,7 @@ def main():
     # Creates the DF for all valid stocks in the list
     validStocksDf = createDf(validStocksList)
     print(validStocksDf)
-    
+
     return validStocksDf
 
 # -----------------------------------------------------------------------------------------
