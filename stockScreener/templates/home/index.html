@@ -33,6 +33,10 @@
             If you would like to choose a specific industry, ensure you choose the matching sector
             and ONLY choose an industry from that sector.
         </p>
+        <p>
+            Load times may be long. Do not close the window and you will be redirected once all valid
+            stocks have been gathered. If your search bar shows it is loading, than it is working.
+        </p>
     </div>
 
     <!-- Get preferences -->
@@ -444,6 +448,11 @@
             <input type="button" id="loadResults" value="Load Results"></input>
     </form>
 
+    <div id="loading">
+        <img src="/static/css/loadingWheel.gif" alt="loading circle" width="100px" height="101px">
+        <h5>Loading...</h5>
+    </div>
+
     <br>
     
     <div class="footer">
@@ -460,6 +469,7 @@
     $(document).ready(function () {
 
         $("#loadResults").hide();
+        $("#loading").hide();
 
         $("#submit").click(function (e) {
 
@@ -496,6 +506,7 @@
         });
         
         $("#loadResults").click(function (e) {
+            $("#loading").show();
             window.location.href = '{% url "dataHandler:ReturnedData"  %}';
         });
     });

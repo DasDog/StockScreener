@@ -119,6 +119,10 @@ input[type=text] {
     background-color: #0e1da3;
 }
 
+#loading {
+    text-align: center;
+}
+
 /* ------------------------------------------------------------------------------------------- */
 /* Disclaimer at the bottom of the page */
 .footer {
