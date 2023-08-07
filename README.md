@@ -8,6 +8,6 @@ To improve readability, some files or directories of interest inside the first f
 - "static" folder contains formatting for the website (CSS and images)
 
 
-*NOTE* : This program is quite slow, so if you wish to test if it works we recommend limiting yourself to the DOW (results will take around 30 seconds).
+*NOTE* : This program is quite slow, so if you wish to test if it works we recommend limiting yourself to the DOW (results may take around 30 seconds).
   This is due to the quantity of statistics being checked, Python being an interpreted language, and amount of required calls to the yfinance library.
-  Larger queries such as 'ALL' stocks can take up to an hour and a half.
+  Larger queries such as 'ALL' stocks can take up to an hour and a half depending on internet speeds.
