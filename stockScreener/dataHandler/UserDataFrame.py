@@ -5,7 +5,6 @@ from main import main
 
 class DataContext:
     
-    
     def __init__(self, request):
         
         self.session = request.session
@@ -26,18 +25,12 @@ class DataContext:
         
         row = {}
         
-        #fix
-        
         for key in self.data:
             
             row[key] = self.data[key].values()
             
             yield row
-            
-        
-            
-            
-                
+                    
     
     def save(self):
         self.session.modified = True

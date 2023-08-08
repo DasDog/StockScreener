@@ -35,16 +35,19 @@ def dataToHtml(request):
         pE = row['P/E'].values()
         dYield = row['Dividend Yield'].values()
         aRec = row['Analyst Recommendation'].values()
-        return render(request, 'dataPage/dataView.html', {
-                                                            'Tickers': tickers, 
-                                                            'companyName': companies,
-                                                            'Sectors': sectors,
-                                                            'Industry': industry,
-                                                            'marketCap': mCap,
-                                                            'Price': price,
-                                                            'PE': pE,
-                                                            'Dividend': dYield,
-                                                            'recommend':aRec })
+        
+        return render(request, 'dataPage/dataView.html',         
+            {
+                'Tickers': tickers, 
+                'companyName': companies,
+                'Sectors': sectors,
+                'Industry': industry,
+                'marketCap': mCap,
+                'Price': price,
+                'PE': pE,
+                'Dividend': dYield,
+                'recommend':aRec 
+            })
         
     except KeyError:
         
