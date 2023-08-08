@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+<meta charset="UTF-8">
 
 <head>
     <title>Fundamental Stock Screener</title>
@@ -506,6 +507,8 @@
         });
         
         $("#loadResults").click(function (e) {
+            $("#submit").hide();
+            $("#loadResults").hide();
             $("#loading").show();
             window.location.href = '{% url "dataHandler:ReturnedData"  %}';
         });

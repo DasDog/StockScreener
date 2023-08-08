@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html lang="en">
+<meta charset="UTF-8">
 
+<head>
+    <title>Fundamental Stock Screener</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/css/favicon.png">
+</head>
 
     <body>
 
-        <table style="width:100%">
-            <tr>
+        <table id="thetable" style="width:100%">
+            <thead>
+                <tr>
                 <th>Ticker</th>
+                <th>Company</th>
+                <th>Sector</th>
+                <th>Industry</th>
+                <th>Market Cap</th>
+                <th>Price</th>
+                <th>P/E</th>
+                <th>Dividend Yield</th>
+                <th>Analyst Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
                 {% for tick in Tickers %}
         
                 <td> {{ tick }} </td>
@@ -16,7 +38,6 @@
             </tr>
             
             <tr>
-                <th>Company</th>
                 {% for c in companyName %}
         
                 <td>  {{ c }} </td>
@@ -25,7 +46,6 @@
             </tr>
 
             <tr>
-                <th>Sector</th>
                 {% for s in Sectors %}
         
                 <td>  {{ s }} </td>
@@ -34,7 +54,6 @@
             </tr>
 
             <tr>
-                <th>Industry</th>
                 {% for I in Industry %}
         
                 <td>  {{ I }} </td>
@@ -42,7 +61,6 @@
                 {% endfor %}
             </tr>
             <tr>
-                <th>Market Cap</th>
                 {% for m in marketCap %}
         
                 <td>  {{ m }} </td>
@@ -50,7 +68,6 @@
                 {% endfor %}
             </tr>
             <tr>
-                <th>Price</th>
                 {% for p in Price %}
         
                 <td>  {{ p }} </td>
@@ -58,7 +75,6 @@
                 {% endfor %}
             </tr>
             <tr>
-                <th>P/E</th>
                 {% for e in PE %}
         
                 <td>  {{ e }} </td>
@@ -66,7 +82,6 @@
                 {% endfor %}
             </tr>
             <tr>
-                <th>Dividend Yield</th>
                 {% for b in Dividend %}
         
                 <td>  {{ b }} </td>
@@ -74,17 +89,77 @@
                 {% endfor %}
             </tr>
             <tr>
-                <th>Analyst Recommendation</th>
                 {% for r in recommend %}
         
-                <td>  {{ r }} </td>
+                {% if r == "strong buy" %}
+
+                    <td style="background-color: rgb(0, 145, 0); text-align: center;">  {{ r }} </td>
+
+                {% endif %}
+
+                {% if r == "buy" %}
+
+                    <td style="background-color: rgb(97, 254, 97); text-align: center;">  {{ r }} </td>
+
+                {% endif %}
+
+                {% if r == "hold" %}
+
+                    <td style="text-align: center;">  {{ r }} </td>
+
+                {% endif %} 
+
+                {% if r == "sell" %}
+
+                    <td style="background-color: rgb(247, 110, 110); text-align: center;">  {{ r }} </td>
+
+                {% endif %} 
+
+                {% if r == "strong sell" %}
+
+                    <td style="background-color: red; text-align: center;">  {{ r }} </td>
+
+                {% endif %} 
 
                 {% endfor %}
             </tr>
+            </tbody>
 
 
         </table>
 
     </body>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="scripts/jquery.table.transpose.min.js"></script>
+    <script type="text/javascript">
+    
+        $(document).ready(function () {
+    
+        var t = $('#thetable tbody').eq(0);
+        var r = t.find('tr');
+        var cols= r.length;
+        var rows= r.eq(0).find('td').length;
+        var cell, next, tem, i = 0;
+        var tb= $('<tbody></tbody>');
+    
+        while(i<rows){
+            cell= 0;
+            tem= $('<tr></tr>');
+            while(cell<cols){
+                next= r.eq(cell++).find('td').eq(0);
+                tem.append(next);
+            }
+            tb.append(tem);
+            ++i;
+        }
+        $('#thetable').append(tb);
+        $('#thetable').show();
+    
+        });
+    
+</script>
+
 
 </html>
