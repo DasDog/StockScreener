@@ -11,6 +11,8 @@ def writeJson(jsonObj):
     with open('preferences.json', 'w') as fp:
         json.dump(jsonObj, fp, indent=2)
 
+# ---------------------------------------------------------------------------
+
 
 def getPreferences():
     """Loads the JSON file containing the parameters the user wishes to screen stocks for.
@@ -94,9 +96,9 @@ def getTickers(indexOrExchange):
                         tickersList.append(stock['Symbol'])
 
         case ('test'):
-            sp500_tickers = pd.read_csv('indexesAndExchanges/test.csv')
+            test = pd.read_csv('indexesAndExchanges/test.csv')
 
-            for index, stock in sp500_tickers.iterrows():
+            for index, stock in test.iterrows():
                 tmp = stock['Symbol']
                 if not (pd.isna(tmp)):
                     if (len(tmp) < 5) and (tmp.isalpha()):
@@ -109,14 +111,16 @@ def getTickers(indexOrExchange):
 
 def createDf(validStocks):
     """
-    Returns a dataframe of the valid stocks stored as a dictionary
+    Returns a dataframe of the valid stocks stored as a dictionary and ordered alphabetically
+    by Ticker.
     Args:
-        validStocks (dict): Data of the stocks that fit the criteria inputted by the user
+        validStocks (list): Data of the stocks that fit the criteria inputted by the user
     Returns:
         Dataframe: A pandas dataframe of all the data in {validStocks}
     """
 
-    return pd.DataFrame(validStocks)
+    validStocksDf = pd.DataFrame(validStocks)
+    return validStocksDf.sort_values(by=['Ticker'])
 
 # ---------------------------------------------------------------------------------------
 
@@ -137,7 +141,52 @@ def populateRows(validStocks, data):
     for key in possibleErrors:
 
         try:
-            thisInfo.append(data[key])
+            if (isinstance(data[key], str)):
+                if (key == 'recommendationKey'):
+                    tmp = data[key]
+                    tmp = tmp.capitalize()
+                    thisInfo.append(tmp)
+                else:
+                    thisInfo.append(data[key])
+
+            else:
+                if (key == 'dividendYield'):
+                    # Decimal to percentage
+                    tmp = data[key] * 100
+                    tmp = round(tmp, 2)
+                    thisInfo.append(tmp)
+
+                elif (key == 'trailingPE'):
+                    # Round PE
+                    tmp = round(data[key], 2)
+                    thisInfo.append(tmp)
+
+                elif (key == 'marketCap'):
+                    # Shorten with M, B, or T to improve readability
+                    # Type casted str to call len
+                    cap = str(data[key])
+                    if ((len(cap) >= 7) and len(cap) <= 9):
+                        # Million
+                        cap = int(cap) / 1000000
+                        cap = round(cap, 2)
+                        cap = str(cap) + "M"
+
+                    elif ((len(cap) >= 10) and len(cap) <= 12):
+                        # Billion
+                        cap = int(cap) / 1000000000
+                        cap = round(cap, 2)
+                        cap = str(cap) + "B"
+
+                    elif ((len(cap) >= 13) and len(cap) <= 15):
+                        # Trillion
+                        cap = int(cap) / 1000000000000
+                        cap = round(cap, 2)
+                        cap = str(cap) + "T"
+                    
+                    thisInfo.append(cap)
+
+                else:
+                    thisInfo.append(data[key])
         except:
             thisInfo.append("N/A")
 
@@ -149,7 +198,7 @@ def populateRows(validStocks, data):
                         'Price': thisInfo[5],
                         'P/E': thisInfo[6],
                         'Dividend Yield': thisInfo[7],
-                        'Analyst Recommendation': thisInfo[8]
+                        'Analyst Recommendation': thisInfo[8].capitalize()
                         })
 
 # MAIN --------------------------------------------------------------------------------

@@ -1,7 +1,12 @@
 import yfinance as yf
 
-stock = yf.Ticker('MSFT')
+stock = yf.Ticker('AMC')
 data = stock.info
 
-for key, value in data.items():
-    print(key, ": ", value)
+tmp = data['recommendationKey']
+tmp = tmp.capitalize()
+
+print(tmp)
+
+#AMC underperform
+#GME underperform
