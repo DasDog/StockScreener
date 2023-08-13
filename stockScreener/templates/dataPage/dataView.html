@@ -14,6 +14,12 @@
 
     <body>
 
+        <!-- Top Section -->
+        <div class="header">
+            <h1>FUNDAMENTAL STOCK SCREENER</h1>
+        </div>
+
+        <!-- Valid Stocks Table -->
         <table id="thetable" style="width:100%">
             <thead>
                 <tr>
@@ -23,7 +29,7 @@
                 <th>Industry</th>
                 <th>Market Cap</th>
                 <th>Price</th>
-                <th>P/E</th>
+                <th>P/E (TTM)</th>
                 <th>Dividend Yield</th>
                 <th>Analyst Recommendation</th>
                 </tr>
@@ -63,70 +69,77 @@
             <tr>
                 {% for m in marketCap %}
         
-                <td>  {{ m }} </td>
+                <td style="text-align: center;">  {{ m }} </td>
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for p in Price %}
         
-                <td>  {{ p }} </td>
+                <td style="text-align: center;">  ${{ p }} </td>
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for e in PE %}
         
-                <td>  {{ e }} </td>
+                <td style="text-align: center;">  {{ e }} </td>
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for b in Dividend %}
         
-                <td>  {{ b }} </td>
+                <td style="text-align: center;">  {{ b }}% </td>
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for r in recommend %}
         
-                {% if r == "strong buy" %}
+                {% if r == "Strong buy" %}
 
                     <td style="background-color: rgb(0, 145, 0); text-align: center;">  {{ r }} </td>
 
                 {% endif %}
 
-                {% if r == "buy" %}
+                {% if r == "Buy" %}
 
                     <td style="background-color: rgb(97, 254, 97); text-align: center;">  {{ r }} </td>
 
                 {% endif %}
 
-                {% if r == "hold" %}
+                {% if r == "Hold" %}
 
                     <td style="text-align: center;">  {{ r }} </td>
 
                 {% endif %} 
 
-                {% if r == "sell" %}
+                {% if r == "Underperform" %}
 
-                    <td style="background-color: rgb(247, 110, 110); text-align: center;">  {{ r }} </td>
+                    <td style="background-color: rgb(242, 136, 36); text-align: center;">  {{ r }} </td>
 
                 {% endif %} 
 
-                {% if r == "strong sell" %}
+                {% if r == "Sell" %}
 
                     <td style="background-color: red; text-align: center;">  {{ r }} </td>
 
-                {% endif %} 
+                {% endif %}
 
                 {% endfor %}
             </tr>
-            </tbody>
-
-
+            </tbody> 
         </table>
+        
+        <!-- Footer -->
+        <br>
+        <div class="footer">
+            <p>* Disclaimer: This is just a resource and should not be used as investment advice.
+                The creators, hosts, and anyone else related to this site are not liable for any
+                losses that may incur.
+            </p>
+        </div>
 
     </body>
 

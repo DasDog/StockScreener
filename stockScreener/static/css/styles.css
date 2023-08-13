@@ -155,7 +155,7 @@ tr:nth-child(even) {
 }
 
 thead {
-    background-color: lightblue;
-    text-decoration: underline;
+    background-color: rgb(204, 242, 255);
+    text-align: center;
     font-size: 20px;
 }
