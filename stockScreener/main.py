@@ -101,7 +101,7 @@ def getTickers(indexOrExchange):
             for index, stock in test.iterrows():
                 tmp = stock['Symbol']
                 if not (pd.isna(tmp)):
-                    if (len(tmp) < 5) and (tmp.isalpha()):
+                    if (len(tmp) < 6) and (tmp.isalpha()):
                         tickersList.append(stock['Symbol'])
 
     return tickersList
@@ -137,17 +137,14 @@ def populateRows(validStocks, data):
     thisInfo = [data['symbol'], data['longName']]
     possibleErrors = ['sector', 'industry', 'marketCap',
                       'currentPrice', 'trailingPE', 'dividendYield', 'recommendationKey']
+    
 
     for key in possibleErrors:
 
         try:
             if (isinstance(data[key], str)):
-                if (key == 'recommendationKey'):
-                    tmp = data[key]
-                    tmp = tmp.capitalize()
-                    thisInfo.append(tmp)
-                else:
-                    thisInfo.append(data[key])
+                
+                thisInfo.append(data[key])
 
             else:
                 if (key == 'dividendYield'):
@@ -188,18 +185,22 @@ def populateRows(validStocks, data):
                 else:
                     thisInfo.append(data[key])
         except:
-            thisInfo.append("N/A")
-
-    validStocks.append({'Ticker': thisInfo[0],
-                        'Company Name': thisInfo[1],
-                        'Sector': thisInfo[2],
-                        'Industry': thisInfo[3],
-                        'Market Cap': thisInfo[4],
-                        'Price': thisInfo[5],
-                        'P/E': thisInfo[6],
-                        'Dividend Yield': thisInfo[7],
-                        'Analyst Recommendation': thisInfo[8].capitalize()
-                        })
+            thisInfo.append("-")
+            
+            
+    
+    validStocks.append({
+        
+        'Ticker': thisInfo[0],
+        'Company Name': thisInfo[1],
+        'Sector': thisInfo[2],
+        'Industry': thisInfo[3],
+        'Market Cap': thisInfo[4],
+        'Price': thisInfo[5],
+        'P/E': thisInfo[6],
+        'Dividend Yield': thisInfo[7],
+        'Analyst Recommendation': thisInfo[8]
+                                                            })
 
 # MAIN --------------------------------------------------------------------------------
 
@@ -464,6 +465,7 @@ def main():
             # If stock passes all preferences, save it
             if (save):
                 populateRows(validStocks=validStocksList, data=data)
+                
 
         except:
             pass

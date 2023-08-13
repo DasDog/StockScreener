@@ -19,6 +19,8 @@
             <h1>FUNDAMENTAL STOCK SCREENER</h1>
         </div>
 
+        <button type="button" > <a href={% url "home:home"  %}>  Go Back to Preferences </a></button> 
+
         <!-- Valid Stocks Table -->
         <table id="thetable" style="width:100%">
             <thead>
@@ -76,56 +78,65 @@
             <tr>
                 {% for p in Price %}
         
-                <td style="text-align: center;">  ${{ p }} </td>
+                    <td style="text-align: center;">  ${{ p }} </td>
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for e in PE %}
-        
-                <td style="text-align: center;">  {{ e }} </td>
+
+                    <td style="text-align: center;">  {{ e }} </td>
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for b in Dividend %}
-        
-                <td style="text-align: center;">  {{ b }}% </td>
+
+                {% if b == "-"%}
+
+                    <td style="text-align: center;">  {{ b }} </td>
+
+                {% else %}
+
+                    <td style="text-align: center;">  {{ b }}% </td>
+
+                {% endif %}
 
                 {% endfor %}
             </tr>
             <tr>
                 {% for r in recommend %}
         
-                {% if r == "Strong buy" %}
+                    {% if r == "strong_buy" %}
 
-                    <td style="background-color: rgb(0, 145, 0); text-align: center;">  {{ r }} </td>
+                        <td style="background-color: #018f87; text-align: center;">  Strong Buy </td>
 
-                {% endif %}
+                    {% endif %}
 
-                {% if r == "Buy" %}
+                    {% if r == "buy" %}
 
-                    <td style="background-color: rgb(97, 254, 97); text-align: center;">  {{ r }} </td>
+                        <td style="background-color: #01bf73; text-align: center;">  Buy </td>
 
-                {% endif %}
+                    {% endif %}
 
-                {% if r == "Hold" %}
+                    {% if r == "hold" %}
 
-                    <td style="text-align: center;">  {{ r }} </td>
+                        <td style=" background-color: #ffdc48; text-align: center;">  Hold </td>
 
-                {% endif %} 
+                    {% endif %} 
 
-                {% if r == "Underperform" %}
+                    {% if r == "underperform" %}
 
-                    <td style="background-color: rgb(242, 136, 36); text-align: center;">  {{ r }} </td>
+                        <td style="background-color: #fea23d; text-align: center;">  Underperform </td>
 
-                {% endif %} 
+                    {% endif %} 
 
-                {% if r == "Sell" %}
+                    {% if r == "sell" %}
 
-                    <td style="background-color: red; text-align: center;">  {{ r }} </td>
+                        <td style="background-color: #ff333a; text-align: center;">  Sell </td>
+                        
 
-                {% endif %}
+                    {% endif %}
 
                 {% endfor %}
             </tr>
