@@ -118,9 +118,16 @@ def createDf(validStocks):
     Returns:
         Dataframe: A pandas dataframe of all the data in {validStocks}
     """
-
+    
+    
     validStocksDf = pd.DataFrame(validStocks)
-    return validStocksDf.sort_values(by=['Ticker'])
+    
+    try:
+        
+        return validStocksDf.sort_values(by=['Ticker'])
+        
+    except:
+        return validStocksDf
 
 # ---------------------------------------------------------------------------------------
 

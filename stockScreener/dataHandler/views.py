@@ -23,8 +23,9 @@ def dataToHtml(request):
     
     row = DataContext(request)
     row  = row.populateDataContext()
+    
+    try:
 
-    if len(dict) != 0:
         tickers = row['Ticker'].values()
         companies = row['Company Name'].values()
         sectors = row['Sector'].values()
@@ -34,8 +35,8 @@ def dataToHtml(request):
         pE = row['P/E'].values()
         dYield = row['Dividend Yield'].values()
         aRec = row['Analyst Recommendation'].values()
-
-        return render(request, 'dataPage/dataView.html',
+        
+        return render(request, 'dataPage/dataView.html',         
             {
                 'Tickers': tickers, 
                 'companyName': companies,
@@ -47,37 +48,10 @@ def dataToHtml(request):
                 'Dividend': dYield,
                 'recommend':aRec 
             })
-    else:
+        
+    except KeyError:
+        
         return render(request, 'dataPage/noStocks.html')
-    
-    # try:
-
-    #     tickers = row['Ticker'].values()
-    #     companies = row['Company Name'].values()
-    #     sectors = row['Sector'].values()
-    #     industry = row['Industry'].values()
-    #     mCap = row['Market Cap'].values()
-    #     price = row['Price'].values()
-    #     pE = row['P/E'].values()
-    #     dYield = row['Dividend Yield'].values()
-    #     aRec = row['Analyst Recommendation'].values()
-        
-    #     return render(request, 'dataPage/dataView.html',         
-    #         {
-    #             'Tickers': tickers, 
-    #             'companyName': companies,
-    #             'Sectors': sectors,
-    #             'Industry': industry,
-    #             'marketCap': mCap,
-    #             'Price': price,
-    #             'PE': pE,
-    #             'Dividend': dYield,
-    #             'recommend':aRec 
-    #         })
-        
-    # except:
-        
-    #     return render(request, 'dataPage/noStocks.html')
         
     
     
