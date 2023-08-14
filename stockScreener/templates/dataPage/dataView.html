@@ -19,7 +19,11 @@
             <h1>FUNDAMENTAL STOCK SCREENER</h1>
         </div>
 
-        <button type="button" > <a href={% url "home:home"  %}>  Go Back to Preferences </a></button> 
+        <div class="goHome">
+            <button type="button" id="homeButton">Go Back to Preferences</button>
+        </div>
+        <br>
+        <br>
 
         <!-- Valid Stocks Table -->
         <table id="thetable" style="width:100%">
@@ -143,6 +147,12 @@
             </tbody> 
         </table>
         
+        <br>
+        <br>
+        <div class="goHome">
+            <button type="button" id="homeButton">Go Back to Preferences</button>
+        </div>
+
         <!-- Footer -->
         <br>
         <div class="footer">
@@ -161,25 +171,29 @@
     
         $(document).ready(function () {
     
-        var t = $('#thetable tbody').eq(0);
-        var r = t.find('tr');
-        var cols= r.length;
-        var rows= r.eq(0).find('td').length;
-        var cell, next, tem, i = 0;
-        var tb= $('<tbody></tbody>');
-    
-        while(i<rows){
-            cell= 0;
-            tem= $('<tr></tr>');
-            while(cell<cols){
-                next= r.eq(cell++).find('td').eq(0);
-                tem.append(next);
+            var t = $('#thetable tbody').eq(0);
+            var r = t.find('tr');
+            var cols= r.length;
+            var rows= r.eq(0).find('td').length;
+            var cell, next, tem, i = 0;
+            var tb= $('<tbody></tbody>');
+        
+            while(i<rows){
+                cell= 0;
+                tem= $('<tr></tr>');
+                while(cell<cols){
+                    next= r.eq(cell++).find('td').eq(0);
+                    tem.append(next);
+                }
+                tb.append(tem);
+                ++i;
             }
-            tb.append(tem);
-            ++i;
-        }
-        $('#thetable').append(tb);
-        $('#thetable').show();
+            $('#thetable').append(tb);
+            $('#thetable').show();
+
+            $(".goHome").click(function (e) {
+                window.location.href = '{% url "home:home"  %}';
+            });
     
         });
     

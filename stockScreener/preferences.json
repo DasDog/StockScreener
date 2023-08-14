@@ -1,8 +1,8 @@
 {
-  "indexOrExchange": "test",
+  "indexOrExchange": "DOW",
   "sector": "",
   "industry": "",
-  "marketCap": "",
+  "marketCap": "smallCap",
   "dividendYieldMin": "",
   "dividendYieldMax": "",
   "payoutRatioMin": "",

@@ -1,14 +1,54 @@
-<html> 
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <title>Fundamental Stock Screener</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/css/favicon.png">
+</head>
+
     <body>
 
+        <!-- Top Section -->
+        <div class="header">
+            <h1>FUNDAMENTAL STOCK SCREENER</h1>
+        </div>
+        <!-- -->
+        
+        <div class="goHome">
+            <button type="button" id="homeButton">Go Back to Preferences</button>
+        </div>  
+        <br>
+        <br>
 
         <h1> The preferences you entered either returned no matching stocks or were invalid </h1>
 
+        <!-- Footer -->
+        <br>
+        <div class="footer">
+            <p>* Disclaimer: This is just a resource and should not be used as investment advice.
+                The creators, hosts, and anyone else related to this site are not liable for any
+                losses that may incur.
+            </p>
+        </div>
 
 
     </body>
 
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
 
+        $(".goHome").click(function (e) {
+                window.location.href = '{% url "home:home"  %}';
+            });
 
+    });
+    </script>
 
 </html>

@@ -101,7 +101,7 @@ def getTickers(indexOrExchange):
             for index, stock in test.iterrows():
                 tmp = stock['Symbol']
                 if not (pd.isna(tmp)):
-                    if (len(tmp) < 6) and (tmp.isalpha()):
+                    if (len(tmp) < 5) and (tmp.isalpha()):
                         tickersList.append(stock['Symbol'])
 
     return tickersList
